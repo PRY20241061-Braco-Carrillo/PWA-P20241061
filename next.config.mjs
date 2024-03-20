@@ -4,17 +4,19 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 const nextConfig = {
   webpack: (config, options) => {
-    if (!options.isServer) {
-      config.resolve.alias['react'] = 'preact/compat';
-      config.resolve.alias['react-dom'] = 'preact/compat';
-      config.resolve.alias['react-dom/test-utils'] = 'preact/test-utils';
-    }
+    //TODO: Update this to use Preact soon as Radix supports it
+    // Alias para React a Preact
+    //if (!options.isServer) {
+    //  config.resolve.alias['react'] = 'preact/compat';
+    //  config.resolve.alias['react-dom'] = 'preact/compat';
+    //  config.resolve.alias['react-dom/test-utils'] = 'preact/test-utils';
+    //}
 
     if (process.env.ANALYZE) {
       config.plugins.push(
         new BundleAnalyzerPlugin({
           analyzerMode: 'server',
-          analyzerPort: 'auto', 
+          analyzerPort: 'auto',
           openAnalyzer: true,
         })
       );
