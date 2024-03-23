@@ -1,0 +1,35 @@
+:root {
+    /*Buttons*/
+    --primary: 12, 92%, 67%;
+    --primary-foreground: 0, 0%, 0%;
+    --primary-hover: 12, 92%, 77%;
+    --primary-hover-foreground: 0, 0%, 0%;
+    --secondary: 42, 67%, 94%;
+    --secondary-foreground: 0, 0%, 0%;
+    --secondary-hover: 42, 67%, 84%;
+    --secondary-hover-foreground: 0, 0%, 0%;
+    --ghost: 210, 30%, 24%;
+    --ghost-foreground: 0, 0%, 100%;
+    --ghost-hover: 210, 30%, 34%;
+    --ghost-hover-foreground: 0, 0%, 100%;
+  
+    /*Menu Card*/
+    --discount-menu-card-background: 40, 100%, 75%;
+    --standard-menu-card-background: 39, 39%, 85%;
+    --full-menu-card-background: 39, 39%, 85%;
+    --ghost-menu-card-background: 210, 100%, 94%;
+  
+    --border: 214.3, 31.8%, 91.4%;
+    --input: 214.3, 31.8%, 91.4%;
+    --ring: 215, 20.2%, 65.1%;
+  
+    --popover: 0, 0%, 100%;
+    --popover-foreground: 222.2, 47.4%, 11.2%;
+    --card: 56, 33%, 96%;
+    --card-foreground: 210, 22%, 23%;
+    --radius: 4rem;
+  
+    --background: 210, 22%, 23%;
+    --foreground: 56, 33%, 96%;
+  }
+  

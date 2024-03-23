@@ -28,22 +28,33 @@ const config = {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
         },
+        primaryHover: {
+          DEFAULT: "hsl(var(--primary-hover))",
+          foreground: "hsl(var(--primary-hover-foreground))",
+        },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
         },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+        secondaryHover: {
+          DEFAULT: "hsl(var(--secondary-hover))",
+          foreground: "hsl(var(--secondary-hover-foreground))",
         },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+        ghost: {
+          DEFAULT: "hsl(var(--ghost))",
+          foreground: "hsl(var(--ghost-foreground))",
         },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+        ghostHover: {
+          DEFAULT: "hsl(var(--ghost-hover))",
+          foreground: "hsl(var(--ghost-hover-foreground))",
         },
+
+        //MenuCard
+        discountMenuCard: "hsl(var(--discount-menu-card-background))",
+        standardMenuCard: "hsl(var(--standard-menu-card-background))",
+        fullMenuCard: "hsl(var(--full-menu-card-background))",
+        ghostMenuCard: "hsl(var(--ghost-menu-card-background))",
+
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",

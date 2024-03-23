@@ -34,6 +34,7 @@
     "zustand": "^4.5.2"
   },
   "devDependencies": {
+    "@csstools/postcss-global-data": "^2.1.1",
     "@fullhuman/postcss-purgecss": "^5.0.0",
     "@svgr/webpack": "^8.1.0",
     "@types/node": "^20",
