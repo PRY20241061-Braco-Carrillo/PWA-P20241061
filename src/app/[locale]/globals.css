@@ -1,5 +1,5 @@
-@import url('../../themes/theme-default.css');
-@import url('../../themes/theme-dark.css');
+@import url('../../../themes/theme-default.css');
+@import url('../../../themes/theme-dark.css');
 
 @tailwind base;
 @tailwind components;

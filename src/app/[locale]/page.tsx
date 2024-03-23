@@ -15,18 +15,18 @@ export default function Home() {
         ariaLabel: "Aria label for time",
         min: 0,
         max: 100,
+        scale: "minutes"
       },
       price: {
         value: 10,
         currency: "USD",
         ariaLabel: "Aria label for price",
-        style: "LIGHT",
       },
       ariaLabel: "Aria label for header",
     },
     ariaLabel: "Aria label for MenuCard",
     primaryImage: {
-      path: "https://www.foodandwine.com/thmb/DI29Houjc_ccAtFKly0BbVsusHc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/crispy-comte-cheesburgers-FT-RECIPE0921-6166c6552b7148e8a8561f7765ddf20b.jpg",
+      path: "https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg",
       alt: "Alt text for image",
       ariaLabel: "Aria label for image",
       labels: [
@@ -34,20 +34,17 @@ export default function Home() {
           type: "DISCOUNT",
           ariaLabel: "Aria label for discount label",
           value: 20,
-          position: "TOP",
         },
       ],
     },
     title: {
       label: "Title label",
-      style: "BOLD",
       ariaLabel: "Aria label for title",
-      alignment: "CENTER",
     },
     classification: {
       max: 5,
       min: 1,
-      current: 3,
+      current: 2,
       ariaLabel: "Aria label for classification",
     },
     footerButtons: [
@@ -67,7 +64,6 @@ export default function Home() {
       },
     ],
     asChild: true,
-    className: "custom-class",
   };
 
   const menuCardPropsStandard: MenuCardProps = {
@@ -77,18 +73,18 @@ export default function Home() {
         ariaLabel: "Aria label for time",
         min: 0,
         max: 100,
+        scale: "minutes"
       },
       price: {
         value: 10,
         currency: "USD",
         ariaLabel: "Aria label for price",
-        style: "LIGHT",
       },
       ariaLabel: "Aria label for header",
     },
     ariaLabel: "Aria label for MenuCard",
     primaryImage: {
-      path: "https://www.foodandwine.com/thmb/DI29Houjc_ccAtFKly0BbVsusHc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/crispy-comte-cheesburgers-FT-RECIPE0921-6166c6552b7148e8a8561f7765ddf20b.jpg",
+      path: "https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg",
       alt: "Alt text for image",
       ariaLabel: "Aria label for image",
       labels: [
@@ -96,15 +92,12 @@ export default function Home() {
           type: "DISCOUNT",
           ariaLabel: "Aria label for discount label",
           value: 20,
-          position: "TOP",
         },
       ],
     },
     title: {
       label: "Title label",
-      style: "BOLD",
       ariaLabel: "Aria label for title",
-      alignment: "CENTER",
     },
     classification: {
       max: 5,
@@ -129,7 +122,6 @@ export default function Home() {
       },
     ],
     asChild: true,
-    className: "custom-class",
   };
 
   const menuCardPropsFull: MenuCardProps = {
@@ -139,18 +131,18 @@ export default function Home() {
         ariaLabel: "Aria label for time",
         min: 0,
         max: 100,
+        scale: "minutes"
       },
       price: {
         value: 10,
         currency: "USD",
         ariaLabel: "Aria label for price",
-        style: "LIGHT",
       },
       ariaLabel: "Aria label for header",
     },
     ariaLabel: "Aria label for MenuCard",
     primaryImage: {
-      path: "https://www.foodandwine.com/thmb/DI29Houjc_ccAtFKly0BbVsusHc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/crispy-comte-cheesburgers-FT-RECIPE0921-6166c6552b7148e8a8561f7765ddf20b.jpg",
+      path: "https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg",
       alt: "Alt text for image",
       ariaLabel: "Aria label for image",
       labels: [
@@ -158,15 +150,13 @@ export default function Home() {
           type: "DISCOUNT",
           ariaLabel: "Aria label for discount label",
           value: 20,
-          position: "TOP",
         },
       ],
     },
     title: {
       label: "Title label",
-      style: "BOLD",
       ariaLabel: "Aria label for title",
-      alignment: "CENTER",
+
     },
     classification: {
       max: 5,
@@ -191,7 +181,6 @@ export default function Home() {
       },
     ],
     asChild: true,
-    className: "custom-class",
   };
 
   const menuCardPropsGhost: MenuCardProps = {
@@ -201,34 +190,31 @@ export default function Home() {
         ariaLabel: "Aria label for time",
         min: 0,
         max: 100,
+        scale: "minutes"
       },
       price: {
         value: 10,
         currency: "USD",
         ariaLabel: "Aria label for price",
-        style: "LIGHT",
       },
       ariaLabel: "Aria label for header",
     },
     ariaLabel: "Aria label for MenuCard",
     primaryImage: {
-      path: "https://www.foodandwine.com/thmb/DI29Houjc_ccAtFKly0BbVsusHc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/crispy-comte-cheesburgers-FT-RECIPE0921-6166c6552b7148e8a8561f7765ddf20b.jpg",
+      path: "https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg",
       alt: "Alt text for image",
       ariaLabel: "Aria label for image",
       labels: [
         {
           type: "DISCOUNT",
           ariaLabel: "Aria label for discount label",
-          value: 20,
-          position: "TOP",
+          value: 20
         },
       ],
     },
     title: {
       label: "Title label",
-      style: "BOLD",
       ariaLabel: "Aria label for title",
-      alignment: "CENTER",
     },
     classification: {
       max: 5,
@@ -253,7 +239,6 @@ export default function Home() {
       },
     ],
     asChild: true,
-    className: "custom-class",
   };
 
   return (
@@ -274,12 +259,17 @@ export default function Home() {
       
       <MenuCard {...menuCardProps}>
       </MenuCard>
-      <MenuCard {...menuCardPropsStandard}>
+
+      
+       <MenuCard  {...menuCardPropsStandard}>
       </MenuCard>
       <MenuCard {...menuCardPropsFull}>
       </MenuCard>
       <MenuCard {...menuCardPropsGhost}>
       </MenuCard>
+      
+      
+      
     </div>
   );
 }

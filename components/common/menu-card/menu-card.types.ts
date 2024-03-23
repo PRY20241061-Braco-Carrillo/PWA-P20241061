@@ -1,15 +1,12 @@
 import { z } from "zod";
 
 const MenuVariantsType = z.enum(["discount", "standard", "full", "ghost"]);
+export type MenuVariantsType = z.infer<typeof MenuVariantsType>;
 
 const LabelType = z.enum(["DISCOUNT", "SIZE"]);
-const LabelTypePosition = z.enum(["TOP", "BOTTOM"]);
 
-const TitleAlignment = z.enum(['LEFT', 'CENTER', 'RIGHT']);
 const FooterButtonVariant = z.enum(["ADD", "AR", "VIEW", "CUSTOM"]);
 
-const TitleStyle = z.enum(["LIGHT", "BOLD"]);
-const StylePrice = z.enum(["LIGHT", "BOLD", "STRIKE"]);
 
 const CurrencySchema = z.enum([
   "PEN",
@@ -46,17 +43,19 @@ const AriaRoleSchema = z.enum([
   "treeitem",
 ]);
 
+const TimeScaleSchema = z.enum(["seconds", "minutes", "hours", "days"]);
+
 const TimeRangeSchema = z.object({
   ariaLabel: z.string(),
   min: z.number().min(0, { message: "The minimum time cannot be negative." }),
   max: z.number().min(0, { message: "The maximum time cannot be negative." }),
+  scale: TimeScaleSchema,
 });
 
 const LabelSchema = z.object({
   type: LabelType,
   ariaLabel: z.string(),
   value: z.union([z.number(), z.string()]),
-  position: LabelTypePosition,
 });
 
 const PrimaryImageSchema = z.object({
@@ -68,9 +67,7 @@ const PrimaryImageSchema = z.object({
 
 const TitleSchema = z.object({
   label: z.string(),
-  style: TitleStyle,
   ariaLabel: z.string(),
-  alignment: TitleAlignment,
 });
 
 const ClassificationSchema = z.object({
@@ -94,13 +91,14 @@ const FooterButtonVariantSchema = z.object({
   ariaExpanded: z.boolean(),
 });
 
+export type FooterButtonVariant = z.infer<typeof FooterButtonVariantSchema>;
+
 const PriceSchema = z.object({
   value: z.number().min(0, { message: "The price cannot be negative." }),
   currency: CurrencySchema,
   ariaLabel: z.string(),
   ariaLive: AriaLiveSchema.optional(),
   ariaRole: AriaRoleSchema.optional(),
-  style: StylePrice,
 });
 
 const HeaderSchema = z.object({
@@ -121,7 +119,6 @@ const MenuCardPropsSchema = z
     classification: ClassificationSchema.optional(),
     footerButtons: z.array(FooterButtonVariantSchema),
     asChild: z.boolean().optional(),
-    className: z.string().optional(),
     variant: MenuVariantsType,
   })
   .superRefine((data, ctx) => {

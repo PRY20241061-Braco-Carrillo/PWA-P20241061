@@ -1,0 +1,11 @@
+{
+    "MenuCard": {
+      "timeScale": {
+        "seconds": "seconds",
+        "minutes": "minutes",
+        "hours": "hours",
+        "days": "days"
+      }
+    }
+  }
+  

@@ -1,8 +1,18 @@
 /** @type {import('next').NextConfig} */
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-
+import createNextIntlPlugin from 'next-intl/plugin';
+ 
+const withNextIntl = createNextIntlPlugin();
 
 const nextConfig = {
+  images: {
+    remotePatterns: [{
+      protocol: 'https',
+      hostname: 'images.pexels.com',
+      port: '',
+    }], 
+  },
+
   webpack: (config, options) => {
     //TODO: Update this to use Preact soon as Radix supports it
     // Alias para React a Preact
@@ -26,7 +36,9 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);
+
+
 
 //import withPWAInit from "@ducanh2912/next-pwa";
 

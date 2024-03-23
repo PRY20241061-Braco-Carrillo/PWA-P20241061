@@ -5,7 +5,6 @@ module.exports = {
       files: [
         './themes/theme-default.css',
         './themes/theme-dark.css',
-        // Añade más archivos aquí si es necesario
       ],
     },
     'tailwindcss': {},

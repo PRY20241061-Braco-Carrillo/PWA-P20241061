@@ -1,46 +1,31 @@
 import { Button } from "@/components/ui/button";
+import ImageWithFallback from "@/components/ui/image";
 import { cn } from "@/lib/utils";
 import { StarFilledIcon } from "@radix-ui/react-icons";
 import { cva, VariantProps } from "class-variance-authority";
+import { useTranslations } from 'next-intl';
 import { forwardRef } from "react";
 import { z } from "zod";
-import { MenuCardPropsSchema } from "./menu-card.types";
-import Image from 'next/image';
+import {
+  FooterButtonVariant,
+  MenuCardPropsSchema
+} from "./menu-card.types";
+import "./styles.css";
 
-const menuCardVariants = cva(
-  [
-    "relative",
-    "flex",
-    "flex-col",
-    "items-center",
-    "overflow-hidden",
-    "shadow-lg",
-    "transition-all",
-    "rounded-tl-3xl",
-    "rounded-br-3xl",
-    "max-w-lg",
-    "mx-auto",
-  ],
-  {
-    variants: {
-      variant: {
-        discount: "bg-discountMenuCard",
-        standard: "bg-standardMenuCard",
-        full: "bg-fullMenuCard",
-        ghost: "bg-ghostMenuCard",
-      },
-      imageSize: {
-        small: "w-1/2 h-auto rounded-lg",
-        medium: "w-3/4 h-auto rounded-lg",
-        large: "w-full h-auto rounded-lg",
-      },
-    },
-    defaultVariants: {
-      variant: "standard",
-      imageSize: "medium",
-    },
-  }
-);
+
+const menuCardVariants = cva([], {
+  variants: {
+    variant: {
+      discount: "bg-discountMenuCard",
+      standard: "bg-standardMenuCard",
+      full: "bg-fullMenuCard",
+      ghost: "bg-ghostMenuCard",
+    }
+  },
+  defaultVariants: {
+    variant: "standard"
+  },
+});
 
 type MenuCardVariantProps = VariantProps<typeof menuCardVariants>;
 
@@ -49,10 +34,12 @@ const MenuCard = forwardRef<
   z.infer<typeof MenuCardPropsSchema> & MenuCardVariantProps
 >((props, ref) => {
   const result = MenuCardPropsSchema.safeParse(props);
+
   if (!result.success) {
-    console.error(result.error);
-    return null;
+    throw new Error(result.error.errors[0].message);
   }
+
+
   const {
     header,
     primaryImage,
@@ -62,96 +49,86 @@ const MenuCard = forwardRef<
     ariaLabel,
     ariaLive,
     ariaRole,
-    className,
     variant,
   } = result.data;
 
-  const classNames = menuCardVariants({
-    variant,
-    className,
-    imageSize: props.imageSize,
+  const t = useTranslations('MenuCard');
+  const timeScaleTranslation = t(`timeScale.${header.time.scale}`);
+
+  const variantClass = cn({
+    "variant-ghost": variant === "ghost",
+    "variant-standard": variant === "standard",
+    "variant-full": variant === "full",
+    "variant-discount": variant === "discount",
   });
 
   return (
-    <div
-      ref={ref}
-      className={classNames}
-      aria-label={ariaLabel}
-      aria-live={ariaLive || undefined}
-      role={ariaRole || undefined}
-    >
-      <div
-        className="menu-card__header flex justify-between w-full p-4"
-        aria-label={header.ariaLabel}
-      >
-        <div aria-label={header.time.ariaLabel}>
-          Time: {header.time.min} - {header.time.max}
-        </div>
-        <div
-          aria-label={header.price.ariaLabel}
-          className={`${header.price.style.toLowerCase()} w-full text-right`}
+    <div className={`card-info ${variantClass}`}>
+      <div className="card-time" aria-label={header.ariaLabel}>
+        <span
+          aria-label={header.time.ariaLabel}
+          className="text-menuCard text-gray-500 center "
         >
-          Price: {header.price.value} {header.price.currency}
-        </div>
+          {header.time.min} - {header.time.max}  {timeScaleTranslation}
+        </span>
       </div>
-
-      <div className="menu-card__image-container flex justify-center w-full py-4">
-        <div className={menuCardVariants({ imageSize: props.imageSize }) + " relative w-full h-full"}>
-          <Image
+      <div
+        ref={ref}
+        className="card-content"
+        aria-label={ariaLabel}
+        aria-live={ariaLive || undefined}
+        role={ariaRole || undefined}
+      >
+        <div className="flex justify-center w-full  mx-auto pr-3 pl-3">
+          <ImageWithFallback
+            fallbackSrc="/images/fallback.jpg"
             src={primaryImage.path}
             alt={primaryImage.alt}
-            layout="fill"
-            objectFit="cover" 
             aria-label={primaryImage.ariaLabel}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </div>
-      </div>
 
-      <div
-        className="menu-card__title flex justify-center w-full p-4"
-        aria-label={title.ariaLabel}
-        style={{
-          textAlign: title.alignment.toLowerCase() as
-            | "center"
-            | "left"
-            | "right",
-        }}
-      >
-        {title.label}
-      </div>
-
-      {classification && (
         <div
-          className="menu-card__classification flex justify-center w-full p-4"
-          aria-label={classification.ariaLabel}
+          className="flex justify-center w-full p-4"
+          aria-label={title.ariaLabel}
         >
-          {Array.from({ length: classification.max }, (_, index) => (
-            <StarFilledIcon
+          {title.label}
+        </div>
+
+        {classification && (
+          <div
+            className=" flex justify-center w-full p-4"
+            aria-label={classification.ariaLabel}
+          >
+            {Array.from({ length: classification.max }, (_, index) => (
+              <StarFilledIcon
+                key={index}
+                className={cn(
+                  "menu-card__star",
+                  index < (classification.current || 0)
+                    ? "text-yellow-500"
+                    : "text-gray-400",
+                  "w-5 h-5"
+                )}
+              />
+            ))}
+          </div>
+        )}
+
+        <div className=" flex justify-around w-full p-4">
+          {footerButtons.map((button: FooterButtonVariant, index) => (
+            <Button
               key={index}
-              className={cn(
-                "menu-card__star",
-                index < (classification.current || 0)
-                  ? "text-yellow-500"
-                  : "text-gray-400",
-                "w-5 h-5"
-              )}
-            />
+              className="menu-card__button"
+              aria-label={button.ariaLabel}
+              aria-pressed={button.ariaPressed}
+              aria-expanded={button.ariaExpanded}
+            >
+              {button.label || button.variant}
+            </Button>
           ))}
         </div>
-      )}
-
-      <div className="menu-card__footer flex justify-around w-full p-4">
-        {footerButtons.map((button, index) => (
-          <Button
-            key={index}
-            className="menu-card__button"
-            aria-label={button.ariaLabel}
-            aria-pressed={button.ariaPressed}
-            aria-expanded={button.ariaExpanded}
-          >
-            {button.label || button.variant}
-          </Button>
-        ))}
       </div>
     </div>
   );
@@ -160,3 +137,4 @@ const MenuCard = forwardRef<
 MenuCard.displayName = "MenuCard";
 
 export { MenuCard };
+

@@ -17,6 +17,13 @@ const config = {
         "2xl": "1400px",
       },
     },
+    fontSize: {
+      sm: ['14px', '10px'],
+      base: ['16px', '24px'],
+      lg: ['20px', '28px'],
+      xl: ['24px', '32px'],
+      menuCard: ['1rem', '15px'],
+    },
     extend: {
       colors: {
         border: "hsl(var(--border))",
