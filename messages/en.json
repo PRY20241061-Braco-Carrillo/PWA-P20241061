@@ -1,11 +1,24 @@
 {
-    "MenuCard": {
-      "timeScale": {
-        "seconds": "seconds",
-        "minutes": "minutes",
-        "hours": "hours",
-        "days": "days"
+  "MenuCard": {
+    "timeScale": {
+      "seconds": "seconds",
+      "minutes": "minutes",
+      "hours": "hours",
+      "days": "days"
+    },
+    "buttons": {
+      "ADD": {
+        "label": "Add",
+        "ariaLabel": "Add button"
+      },
+      "VIEW": {
+        "label": "View",
+        "ariaLabel": "View button"
+      },
+      "AR": {
+        "label": "AR",
+        "ariaLabel": "AR button"
       }
     }
   }
-  
+}

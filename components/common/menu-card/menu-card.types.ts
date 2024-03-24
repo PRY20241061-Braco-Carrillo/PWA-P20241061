@@ -5,8 +5,8 @@ export type MenuVariantsType = z.infer<typeof MenuVariantsType>;
 
 const LabelType = z.enum(["DISCOUNT", "SIZE"]);
 
-const FooterButtonVariant = z.enum(["ADD", "AR", "VIEW", "CUSTOM"]);
-
+export const FooterButtonTypes = z.enum(["ADD", "AR", "VIEW", "CUSTOM"]);
+export type FooterButtonType = z.infer<typeof FooterButtonTypes>;
 
 const CurrencySchema = z.enum([
   "PEN",
@@ -84,11 +84,7 @@ const ClassificationSchema = z.object({
 });
 
 const FooterButtonVariantSchema = z.object({
-  variant: FooterButtonVariant,
-  label: z.string().optional(),
-  ariaLabel: z.string(),
-  ariaPressed: z.boolean(),
-  ariaExpanded: z.boolean(),
+  type: FooterButtonTypes,
 });
 
 export type FooterButtonVariant = z.infer<typeof FooterButtonVariantSchema>;

@@ -1,11 +1,24 @@
 {
-    "MenuCard": {
-      "timeScale": {
-        "seconds": "segundos",
-        "minutes": "minutos",
-        "hours": "horas",
-        "days": "días"
+  "MenuCard": {
+    "timeScale": {
+      "seconds": "segundos",
+      "minutes": "minutos",
+      "hours": "horas",
+      "days": "días"
+    },
+    "buttons": {
+      "ADD": {
+        "label": "Agregar",
+        "ariaLabel": "Botón de agregar"
+      },
+      "VIEW": {
+        "label": "Ver",
+        "ariaLabel": "Botón de ver"
+      },
+      "AR": {
+        "label": "Realidad aumentada",
+        "ariaLabel": "Botón de Realidad Aumentada"
       }
     }
   }
-  
+}

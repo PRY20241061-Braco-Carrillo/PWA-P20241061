@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={inter.className}>
+      <body cz-shortcut-listen="true" className={inter.className}>
       <ThemeProvider
             attribute="class"
             defaultTheme="system"

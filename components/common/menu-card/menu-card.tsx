@@ -7,10 +7,12 @@ import { useTranslations } from 'next-intl';
 import { forwardRef } from "react";
 import { z } from "zod";
 import {
+  FooterButtonTypes,
   FooterButtonVariant,
   MenuCardPropsSchema
 } from "./menu-card.types";
 import "./styles.css";
+import MenuButton from "./button/menu-buttons";
 
 
 const menuCardVariants = cva([], {
@@ -118,15 +120,10 @@ const MenuCard = forwardRef<
 
         <div className=" flex justify-around w-full p-4">
           {footerButtons.map((button: FooterButtonVariant, index) => (
-            <Button
-              key={index}
-              className="menu-card__button"
-              aria-label={button.ariaLabel}
-              aria-pressed={button.ariaPressed}
-              aria-expanded={button.ariaExpanded}
-            >
-              {button.label || button.variant}
-            </Button>
+           <MenuButton
+           key={index}
+           typeStyle={button.type} 
+         />
           ))}
         </div>
       </div>

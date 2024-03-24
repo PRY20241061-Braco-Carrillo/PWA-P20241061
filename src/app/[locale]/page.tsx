@@ -49,18 +49,10 @@ export default function Home() {
     },
     footerButtons: [
       {
-        variant: "ADD",
-        label: "Add",
-        ariaLabel: "Aria label for Add button",
-        ariaPressed: true,
-        ariaExpanded: false,
+        type: "ADD",
       },
       {
-        variant: "VIEW",
-        label: "View",
-        ariaLabel: "Aria label for View button",
-        ariaPressed: false,
-        ariaExpanded: true,
+        type: "VIEW",
       },
     ],
     asChild: true,
@@ -107,18 +99,10 @@ export default function Home() {
     },
     footerButtons: [
       {
-        variant: "ADD",
-        label: "Add",
-        ariaLabel: "Aria label for Add button",
-        ariaPressed: true,
-        ariaExpanded: false,
+        type: "ADD",
       },
       {
-        variant: "VIEW",
-        label: "View",
-        ariaLabel: "Aria label for View button",
-        ariaPressed: false,
-        ariaExpanded: true,
+        type: "VIEW",
       },
     ],
     asChild: true,
@@ -166,18 +150,10 @@ export default function Home() {
     },
     footerButtons: [
       {
-        variant: "ADD",
-        label: "Add",
-        ariaLabel: "Aria label for Add button",
-        ariaPressed: true,
-        ariaExpanded: false,
+        type: "ADD",
       },
       {
-        variant: "VIEW",
-        label: "View",
-        ariaLabel: "Aria label for View button",
-        ariaPressed: false,
-        ariaExpanded: true,
+        type: "VIEW",
       },
     ],
     asChild: true,
@@ -224,18 +200,10 @@ export default function Home() {
     },
     footerButtons: [
       {
-        variant: "ADD",
-        label: "Add",
-        ariaLabel: "Aria label for Add button",
-        ariaPressed: true,
-        ariaExpanded: false,
+        type: "ADD",
       },
       {
-        variant: "VIEW",
-        label: "View",
-        ariaLabel: "Aria label for View button",
-        ariaPressed: false,
-        ariaExpanded: true,
+        type: "VIEW",
       },
     ],
     asChild: true,
