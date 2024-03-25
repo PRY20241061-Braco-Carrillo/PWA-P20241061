@@ -5,10 +5,10 @@ export type MenuVariantsType = z.infer<typeof MenuVariantsType>;
 
 const LabelType = z.enum(["DISCOUNT", "SIZE"]);
 
-export const FooterButtonTypes = z.enum(["ADD", "AR", "VIEW", "CUSTOM"]);
+export const FooterButtonTypes = z.enum(["ADD", "AR", "VIEW", "PROMOTION_DETAIL"]);
 export type FooterButtonType = z.infer<typeof FooterButtonTypes>;
 
-const CurrencySchema = z.enum([
+export const CurrencySchema = z.enum([
   "PEN",
   "USD",
   "EUR",
@@ -22,6 +22,21 @@ const CurrencySchema = z.enum([
   "NZD",
 ]);
 
+export const currencySymbols: Record<Currency, string> = {
+  PEN: "S/.",
+  USD: "$",
+  EUR: "€",
+  GBP: "£",
+  JPY: "¥",
+  CNY: "¥",
+  CAD: "$",
+  AUD: "$",
+  CHF: "CHF",
+  SEK: "kr",
+  NZD: "$",
+};
+
+export type Currency = z.infer<typeof CurrencySchema>;
 
 const AriaLiveSchema = z.enum(["off", "assertive", "polite"]);
 const AriaRoleSchema = z.enum([

@@ -19,7 +19,7 @@ export default function Home() {
       },
       price: {
         value: 10,
-        currency: "USD",
+        currency: "PEN",
         ariaLabel: "Aria label for price",
       },
       ariaLabel: "Aria label for header",
@@ -52,7 +52,7 @@ export default function Home() {
         type: "ADD",
       },
       {
-        type: "VIEW",
+        type: "AR",
       },
     ],
     asChild: true,
@@ -200,10 +200,10 @@ export default function Home() {
     },
     footerButtons: [
       {
-        type: "ADD",
+        type: "PROMOTION_DETAIL",
       },
       {
-        type: "VIEW",
+        type: "AR",
       },
     ],
     asChild: true,

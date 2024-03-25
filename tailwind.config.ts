@@ -19,9 +19,11 @@ const config = {
     },
     fontSize: {
       sm: ['14px', '10px'],
-      base: ['16px', '24px'],
+      base: ['16px', '12px'],
       lg: ['20px', '28px'],
       xl: ['24px', '32px'],
+      "2xl": ['32px', '40px'],
+      "3xl": ['40px', '48px'],
       menuCard: ['1rem', '15px'],
     },
     extend: {

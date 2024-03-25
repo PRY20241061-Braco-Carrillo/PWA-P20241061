@@ -18,6 +18,10 @@
       "AR": {
         "label": "AR",
         "ariaLabel": "AR button"
+      },
+      "PROMOTION_DETAIL": {
+        "label": "Promotion Details",
+        "ariaLabel": "Promotion Details button"
       }
     }
   }

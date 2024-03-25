@@ -1,18 +1,16 @@
-import { Button } from "@/components/ui/button";
 import ImageWithFallback from "@/components/ui/image";
-import { cn } from "@/lib/utils";
-import { StarFilledIcon } from "@radix-ui/react-icons";
+import { cn, getCurrencySymbol } from "@/lib/utils";
+import StarFilledIcon from "../../icons/star-filled.svg";
 import { cva, VariantProps } from "class-variance-authority";
 import { useTranslations } from 'next-intl';
 import { forwardRef } from "react";
 import { z } from "zod";
+import MenuButton from "./button/menu-buttons";
 import {
-  FooterButtonTypes,
   FooterButtonVariant,
   MenuCardPropsSchema
 } from "./menu-card.types";
 import "./styles.css";
-import MenuButton from "./button/menu-buttons";
 
 
 const menuCardVariants = cva([], {
@@ -92,40 +90,44 @@ const MenuCard = forwardRef<
         </div>
 
         <div
-          className="flex justify-center w-full p-4"
+          className="flex justify-center w-full text-lg font-normal pt-2"
           aria-label={title.ariaLabel}
         >
           {title.label}
         </div>
+        {variant !== "full" && (
+        <div className="flex justify-center w-full text-2xl font-semibold pt-2" aria-label={title.ariaLabel}>
+          {getCurrencySymbol(header.price.currency)} {header.price.value.toFixed(2)}
+        </div>
+      )}
 
         {classification && (
           <div
-            className=" flex justify-center w-full p-4"
+            className=" flex justify-center w-full pt-2 pb-2 text-center "
             aria-label={classification.ariaLabel}
           >
             {Array.from({ length: classification.max }, (_, index) => (
               <StarFilledIcon
                 key={index}
                 className={cn(
-                  "menu-card__star",
                   index < (classification.current || 0)
                     ? "text-yellow-500"
-                    : "text-gray-400",
-                  "w-5 h-5"
+                    : "text-black",
                 )}
               />
             ))}
           </div>
         )}
 
-        <div className=" flex justify-around w-full p-4">
-          {footerButtons.map((button: FooterButtonVariant, index) => (
-           <MenuButton
-           key={index}
-           typeStyle={button.type} 
-         />
-          ))}
-        </div>
+<div className="flex flex-col w-full p-4 space-y-2">
+  {footerButtons.map((button: FooterButtonVariant, index) => (
+    <MenuButton
+      key={index}
+      typeStyle={button.type} 
+    />
+  ))}
+</div>
+
       </div>
     </div>
   );

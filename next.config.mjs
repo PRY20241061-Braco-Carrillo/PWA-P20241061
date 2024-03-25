@@ -22,6 +22,18 @@ const nextConfig = {
     //  config.resolve.alias['react-dom/test-utils'] = 'preact/test-utils';
     //}
 
+    const imageRule = config.module.rules.find(rule => String(rule.test) === String(/\.(png|jpe?g|gif|webp|avif)$/i));
+    if (imageRule) {
+      imageRule.exclude = /\.svg$/i;
+    }
+
+    // Añade una nueva regla para procesar SVGs con SVGR
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    });
+
+    
     if (process.env.ANALYZE) {
       config.plugins.push(
         new BundleAnalyzerPlugin({

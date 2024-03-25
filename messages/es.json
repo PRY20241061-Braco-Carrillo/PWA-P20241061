@@ -18,6 +18,10 @@
       "AR": {
         "label": "Realidad aumentada",
         "ariaLabel": "Botón de Realidad Aumentada"
+      },
+      "PROMOTION_DETAIL": {
+        "label": "Detalle promoción",
+        "ariaLabel": "Botón de detalles de la promoción"
       }
     }
   }

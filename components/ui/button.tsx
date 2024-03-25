@@ -5,17 +5,17 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
+  " inline-flex items-center justify-center  rounded-md text-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground shadow-sm hover:bg-primaryHover hover:shadow-md",
+        default: " px-4 py-2 mb-2 mt-2 bg-primary text-primary-foreground shadow-sm hover:bg-primaryHover hover:shadow-md",
         secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondaryHover hover:shadow-md",
         ghost: "bg-ghost text-ghost-foreground shadow-sm hover:bg-ghostHover hover:shadow-md",
       },
       size: {
-        default: "h-9 px-4 py-2",
-        icon: "h-9 w-9",
+        default: "h-12 ",
+        icon: "h-12 w-9",
       },
     },
     defaultVariants: {
@@ -38,6 +38,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
+        
         {...props}
       />
     )

@@ -1,10 +1,11 @@
+import { CubeIcon, EyeOpenIcon, FileTextIcon, PlusCircledIcon } from "@radix-ui/react-icons";
 import { z } from "zod";
-import {PlusCircledIcon, EyeOpenIcon, CubeIcon} from "@radix-ui/react-icons";
 
 export const IconComponents = {
   AddIcon: PlusCircledIcon,
   ViewIcon: EyeOpenIcon, 
   ArIcon: CubeIcon,
+  PromotionDetailIcon: FileTextIcon,
 };
 
 
@@ -15,6 +16,15 @@ const ButtonVariant = z.enum([
   "default", "secondary", "ghost",
 ]);
 
+const ActionTypeEnum = z.enum([
+  "navigate", "dialog", "ar", "addToCart", "promotionDetail",
+]);
+
+
+export type ButtonVariant = z.infer<typeof ButtonVariant>;
+export const ActionTypeEnums = ActionTypeEnum.enum;
+
+
 export const ButtonConfigSchema = z.object({
   label: z.string(),
   ariaLabel: z.string(),
@@ -23,6 +33,9 @@ export const ButtonConfigSchema = z.object({
   disabled: z.boolean().optional(),
   icon: IconNames.optional(),
   variant: ButtonVariant,
+  actionType: ActionTypeEnum.optional(),
+  path: z.string().optional(), 
+  id: z.string().optional(),
 });
 
 
@@ -34,3 +47,4 @@ export type ButtonsConfig = z.infer<typeof ButtonsConfigSchema>;
 
 export const ButtonConfigRecordSchema = z.record(ButtonConfigSchema);
 export type ButtonConfigRecord = z.infer<typeof ButtonConfigRecordSchema>;
+
