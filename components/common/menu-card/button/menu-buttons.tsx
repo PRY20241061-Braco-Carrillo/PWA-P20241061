@@ -21,8 +21,8 @@ interface MenuButtonProps {
 const MenuButton: React.FC<MenuButtonProps> = ({ typeStyle }) => {
     const t = useTranslations("MenuCard");
     const router = useRouter();
-    const label = t(`buttons.${typeStyle}.label`);
-    const ariaLabel = t(`buttons.${typeStyle}.ariaLabel`);
+    const label = t("buttons." + typeStyle + ".label"); 
+    const ariaLabel = t("buttons." + typeStyle + ".label"); 
 
     const config = buttonConfig[typeStyle];
     if (!config) {
@@ -86,7 +86,6 @@ const MenuButton: React.FC<MenuButtonProps> = ({ typeStyle }) => {
                 </span>
             )}
         </Button>
-        
     );
 };
 

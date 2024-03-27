@@ -23,6 +23,60 @@
         "label": "Detalle promoción",
         "ariaLabel": "Botón de detalles de la promoción"
       }
+    },
+    "labelType": {
+      "DISCOUNT": {
+        "label": "Descuento",
+        "ariaLabel": "Etiqueta de descuento"
+      },
+      "SIZE": {
+        "label": "Tamaño",
+        "ariaLabel": "Etiqueta de tamaño"
+      }
+    }
+  },
+  "SizeUnit": {
+    "PIECES": {
+      "label": "Piezas",
+      "ariaLabel": "Cantidad de piezas"
+    },
+    "GRAMS": {
+      "label": "Gramos",
+      "ariaLabel": "Peso en gramos",
+      "abbreviation": "g"
+    },
+    "KG": {
+      "label": "Kilogramos",
+      "ariaLabel": "Peso en kilogramos",
+      "abbreviation": "kg"
+    },
+    "VOLUME": {
+      "label": "Volumen",
+      "ariaLabel": "Volumen"
+    },
+    "L": {
+      "label": "Litros",
+      "ariaLabel": "Volumen en litros",
+      "abbreviation": "L"
+    },
+    "ML": {
+      "label": "Mililitros",
+      "ariaLabel": "Volumen en mililitros",
+      "abbreviation": "mL"
+    },
+    "DESCRIPTION": {
+      "SMALL": {
+        "label": "Pequeño",
+        "ariaLabel": "Tamaño pequeño"
+      },
+      "MEDIUM": {
+        "label": "Mediano",
+        "ariaLabel": "Tamaño mediano"
+      },
+      "LARGE": {
+        "label": "Grande",
+        "ariaLabel": "Tamaño grande"
+      }
     }
   }
 }

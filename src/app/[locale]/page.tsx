@@ -1,6 +1,6 @@
 import { AccesibilityToggle } from "@/components/common/accesibility/accesibility";
 import { MenuCard } from "@/components/common/menu-card/menu-card";
-import { MenuCardProps } from "@/components/common/menu-card/menu-card.types";
+import { MenuCardProps } from "@/components/common/menu-card/types/menu-card.types";
 import { Button } from "@/components/ui/button";
 import {
   Card
@@ -31,10 +31,22 @@ export default function Home() {
       ariaLabel: "Aria label for image",
       labels: [
         {
-          type: "DISCOUNT",
-          ariaLabel: "Aria label for discount label",
-          value: 20,
+          type: "SIZE",
+          value: {
+            type: "GRAMS",
+            weight: 100,
+            unit: "KG",
+          },
+          priority: 1,
         },
+        {
+          type: "DISCOUNT",
+          value: {
+            amount: 10,
+            unit: '%',
+          },
+          priority: 2,
+        }
       ],
     },
     title: {
@@ -82,8 +94,19 @@ export default function Home() {
       labels: [
         {
           type: "DISCOUNT",
-          ariaLabel: "Aria label for discount label",
-          value: 20,
+          value: {
+            amount: 10,
+            unit: '%',
+          },
+          priority: 1,
+        },
+        {
+          type: "DISCOUNT",
+          value: {
+            amount: 10,
+            unit: '%',
+          },
+          priority: 1,
         },
       ],
     },
@@ -132,9 +155,12 @@ export default function Home() {
       labels: [
         {
           type: "DISCOUNT",
-          ariaLabel: "Aria label for discount label",
-          value: 20,
-        },
+          value: {
+            amount: 10,
+            unit: '%',
+          },
+          priority: 1,
+        }
       ],
     },
     title: {
@@ -183,9 +209,12 @@ export default function Home() {
       labels: [
         {
           type: "DISCOUNT",
-          ariaLabel: "Aria label for discount label",
-          value: 20
-        },
+          value: {
+            amount: 10,
+            unit: '%',
+          },
+          priority: 1,
+        }
       ],
     },
     title: {

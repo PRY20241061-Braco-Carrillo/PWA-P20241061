@@ -1,4 +1,5 @@
-import { Currency, CurrencySchema, currencySymbols } from "@/components/common/menu-card/menu-card.types";
+
+import { Currency, CurrencySchema, currencySymbols } from "@/src/constants/currency.types";
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 
@@ -16,4 +17,5 @@ export const getCurrencySymbol = (currency: Currency): string => {
   
   return currencySymbols[currency];
 };
+
 

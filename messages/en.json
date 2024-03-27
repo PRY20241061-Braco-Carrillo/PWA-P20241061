@@ -23,6 +23,60 @@
         "label": "Promotion Details",
         "ariaLabel": "Promotion Details button"
       }
+    },
+    "labelType": {
+      "DISCOUNT": {
+        "label": "Discount",
+        "ariaLabel": "Discount label"
+      },
+      "SIZE": {
+        "label": "Size",
+        "ariaLabel": "Size label"
+      }
+    }
+  },
+  "SizeUnit": {
+    "PIECES": {
+      "label": "Pieces",
+      "ariaLabel": "Quantity in pieces"
+    },
+    "GRAMS": {
+      "label": "Grams",
+      "ariaLabel": "Weight in grams",
+      "abbreviation": "g"
+    },
+    "KG": {
+      "label": "Kilograms",
+      "ariaLabel": "Weight in kilograms",
+      "abbreviation": "kg"
+    },
+    "VOLUME": {
+      "label": "Volume",
+      "ariaLabel": "Volume in liquid measurement"
+    },
+    "L": {
+      "label": "Liters",
+      "ariaLabel": "Volume in liters",
+      "abbreviation": "L"
+    },
+    "ML": {
+      "label": "Milliliters",
+      "ariaLabel": "Volume in milliliters",
+      "abbreviation": "mL"
+    },
+    "DESCRIPTION": {
+      "SMALL": {
+        "label": "Small",
+        "ariaLabel": "Small size"
+      },
+      "MEDIUM": {
+        "label": "Medium",
+        "ariaLabel": "Medium size"
+      },
+      "LARGE": {
+        "label": "Large",
+        "ariaLabel": "Large size"
+      }
     }
   }
 }

@@ -1,83 +1,46 @@
+import { CurrencySchema } from "@/src/constants/currency.types";
 import { z } from "zod";
+import { LabelType } from "./menu-label.types";
+import { FooterButtonTypes } from "./menu-footer_buttons.types";
+import { MenuVariantsType } from "./menu-variants.types";
+import { TimeRangeSchema } from "./menu-time.types";
+import { AriaLiveSchema, AriaRoleSchema } from "@/src/constants/aria.types";
+import { SizeSchema } from "@/src/constants/size_units.types";
 
-const MenuVariantsType = z.enum(["discount", "standard", "full", "ghost"]);
-export type MenuVariantsType = z.infer<typeof MenuVariantsType>;
 
-const LabelType = z.enum(["DISCOUNT", "SIZE"]);
 
-export const FooterButtonTypes = z.enum(["ADD", "AR", "VIEW", "PROMOTION_DETAIL"]);
-export type FooterButtonType = z.infer<typeof FooterButtonTypes>;
-
-export const CurrencySchema = z.enum([
-  "PEN",
-  "USD",
-  "EUR",
-  "GBP",
-  "JPY",
-  "CNY",
-  "CAD",
-  "AUD",
-  "CHF",
-  "SEK",
-  "NZD",
-]);
-
-export const currencySymbols: Record<Currency, string> = {
-  PEN: "S/.",
-  USD: "$",
-  EUR: "€",
-  GBP: "£",
-  JPY: "¥",
-  CNY: "¥",
-  CAD: "$",
-  AUD: "$",
-  CHF: "CHF",
-  SEK: "kr",
-  NZD: "$",
-};
-
-export type Currency = z.infer<typeof CurrencySchema>;
-
-const AriaLiveSchema = z.enum(["off", "assertive", "polite"]);
-const AriaRoleSchema = z.enum([
-  "button",
-  "link",
-  "checkbox",
-  "menuitem",
-  "menuitemcheckbox",
-  "menuitemradio",
-  "option",
-  "progressbar",
-  "radio",
-  "slider",
-  "spinbutton",
-  "switch",
-  "tab",
-  "tablist",
-  "textbox",
-  "treeitem",
-]);
-
-const TimeScaleSchema = z.enum(["seconds", "minutes", "hours", "days"]);
-
-const TimeRangeSchema = z.object({
-  ariaLabel: z.string(),
-  min: z.number().min(0, { message: "The minimum time cannot be negative." }),
-  max: z.number().min(0, { message: "The maximum time cannot be negative." }),
-  scale: TimeScaleSchema,
+const NumericValueSchema = z.object({
+  amount: z.union([z.string(), z.number()]), 
+  unit: z.union([CurrencySchema, z.literal('%')]), 
 });
+
+export const ValueSchema = z.union([
+  NumericValueSchema,
+  SizeSchema,
+]);
+
 
 const LabelSchema = z.object({
   type: LabelType,
-  ariaLabel: z.string(),
-  value: z.union([z.number(), z.string()]),
-});
+  value: ValueSchema,
+  priority: z.number().optional(),
+}).superRefine((data, ctx) => {
+
+  if (data.type === "SIZE" && ("amount" in data.value)) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      message: 'The "amount" field is not allowed for the "SIZE" type.',
+    });
+}});
+
+export type Label = z.infer<typeof LabelSchema>;
+
 
 const PrimaryImageSchema = z.object({
   path: z.string().url({ message: "The path should be a valid URL." }),
   alt: z.string(),
   ariaLabel: z.string(),
-  labels: z.array(LabelSchema),
+  labels: z.array(LabelSchema).max(3),
 });
 
 const TitleSchema = z.object({

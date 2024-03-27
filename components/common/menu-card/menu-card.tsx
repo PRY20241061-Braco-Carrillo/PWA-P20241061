@@ -1,17 +1,19 @@
 import ImageWithFallback from "@/components/ui/image";
 import { cn, getCurrencySymbol } from "@/lib/utils";
-import StarFilledIcon from "../../icons/star-filled.svg";
 import { cva, VariantProps } from "class-variance-authority";
-import { useTranslations } from 'next-intl';
+import { useTranslations } from "next-intl";
 import { forwardRef } from "react";
 import { z } from "zod";
+import StarFilledIcon from "../../icons/star-filled.svg";
 import MenuButton from "./button/menu-buttons";
 import {
   FooterButtonVariant,
-  MenuCardPropsSchema
-} from "./menu-card.types";
+  Label,
+  MenuCardPropsSchema,
+} from "./types/menu-card.types";
 import "./styles.css";
-
+import { LabelType } from "./types/menu-label.types";
+import { TranslatableSize } from "@/src/constants/size_units.types";
 
 const menuCardVariants = cva([], {
   variants: {
@@ -20,10 +22,10 @@ const menuCardVariants = cva([], {
       standard: "bg-standardMenuCard",
       full: "bg-fullMenuCard",
       ghost: "bg-ghostMenuCard",
-    }
+    },
   },
   defaultVariants: {
-    variant: "standard"
+    variant: "standard",
   },
 });
 
@@ -39,7 +41,6 @@ const MenuCard = forwardRef<
     throw new Error(result.error.errors[0].message);
   }
 
-
   const {
     header,
     primaryImage,
@@ -52,8 +53,29 @@ const MenuCard = forwardRef<
     variant,
   } = result.data;
 
-  const t = useTranslations('MenuCard');
-  const timeScaleTranslation = t(`timeScale.${header.time.scale}`);
+  const t = useTranslations();
+  const menuCardPrefix = "MenuCard.";
+
+  const timeScaleTranslation = t(
+    menuCardPrefix + "timeScale." + header.time.scale
+  );
+  const { labels: primaryImageLabels } = primaryImage;
+
+  const imageLabels: string[] = [];
+  const imageLabelsAria: string[] = [];
+  const imageLabelsTypes: LabelType[] = [];
+
+  for (const label of primaryImageLabels) {
+    const { type } = label;
+    const baseTranslationPath = menuCardPrefix + "labelType.";
+    const translatedLabel = t(baseTranslationPath + type + ".label"); ;
+    const translatedAriaLabel = t(baseTranslationPath + type + ".ariaLabel");
+
+    imageLabels.push(translatedLabel);
+    imageLabelsAria.push(translatedAriaLabel);
+    imageLabelsTypes.push(type);
+  }
+
 
   const variantClass = cn({
     "variant-ghost": variant === "ghost",
@@ -62,6 +84,7 @@ const MenuCard = forwardRef<
     "variant-discount": variant === "discount",
   });
 
+
   return (
     <div className={`card-info ${variantClass}`}>
       <div className="card-time" aria-label={header.ariaLabel}>
@@ -69,7 +92,7 @@ const MenuCard = forwardRef<
           aria-label={header.time.ariaLabel}
           className="text-menuCard text-gray-500 center "
         >
-          {header.time.min} - {header.time.max}  {timeScaleTranslation}
+          {header.time.min} - {header.time.max} {timeScaleTranslation}
         </span>
       </div>
       <div
@@ -86,6 +109,10 @@ const MenuCard = forwardRef<
             alt={primaryImage.alt}
             aria-label={primaryImage.ariaLabel}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            imageLabels={imageLabels}
+            primaryImageLabels={primaryImageLabels}
+            imageLabelsAria={imageLabelsAria}
+            imageLabelsTypes={imageLabelsTypes}
           />
         </div>
 
@@ -96,10 +123,14 @@ const MenuCard = forwardRef<
           {title.label}
         </div>
         {variant !== "full" && (
-        <div className="flex justify-center w-full text-2xl font-semibold pt-2" aria-label={title.ariaLabel}>
-          {getCurrencySymbol(header.price.currency)} {header.price.value.toFixed(2)}
-        </div>
-      )}
+          <div
+            className="flex justify-center w-full text-2xl font-semibold pt-2"
+            aria-label={title.ariaLabel}
+          >
+            {getCurrencySymbol(header.price.currency)}{" "}
+            {header.price.value.toFixed(2)}
+          </div>
+        )}
 
         {classification && (
           <div
@@ -112,22 +143,18 @@ const MenuCard = forwardRef<
                 className={cn(
                   index < (classification.current || 0)
                     ? "text-yellow-500"
-                    : "text-black",
+                    : "text-black"
                 )}
               />
             ))}
           </div>
         )}
 
-<div className="flex flex-col w-full p-4 space-y-2">
-  {footerButtons.map((button: FooterButtonVariant, index) => (
-    <MenuButton
-      key={index}
-      typeStyle={button.type} 
-    />
-  ))}
-</div>
-
+        <div className="flex flex-col w-full p-4 space-y-2">
+          {footerButtons.map((button: FooterButtonVariant, index) => (
+            <MenuButton key={index} typeStyle={button.type} />
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -136,4 +163,3 @@ const MenuCard = forwardRef<
 MenuCard.displayName = "MenuCard";
 
 export { MenuCard };
-
