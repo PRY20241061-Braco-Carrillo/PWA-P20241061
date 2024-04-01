@@ -4,7 +4,7 @@ import { cva, VariantProps } from "class-variance-authority";
 import { useTranslations } from "next-intl";
 import { forwardRef } from "react";
 import { z } from "zod";
-import StarFilledIcon from "../../icons/star-filled.svg";
+
 import MenuButton from "./button/menu-buttons";
 import {
   FooterButtonVariant,
@@ -14,6 +14,8 @@ import {
 import "./styles.css";
 import { LabelType } from "./types/menu-label.types";
 import { TranslatableSize } from "@/src/constants/size_units.types";
+import { StarFilledIcon } from "@/components/icons";
+import DynamicSizeSelector from "./size-selector/size-selector";
 
 const menuCardVariants = cva([], {
   variants: {
@@ -51,6 +53,7 @@ const MenuCard = forwardRef<
     ariaLive,
     ariaRole,
     variant,
+    availableSizes,
   } = result.data;
 
   const t = useTranslations();
@@ -141,15 +144,20 @@ const MenuCard = forwardRef<
               <StarFilledIcon
                 key={index}
                 className={cn(
+                  "w-10 h-9 sm:w-10 sm:h-9 md:w-12 md:h-11 lg:w-12 lg:h-11 xl:w-14 xl:h-12",
                   index < (classification.current || 0)
-                    ? "text-yellow-500"
-                    : "text-black"
+                    ? "text-yellow-500 "
+                    : "text-black "
                 )}
               />
             ))}
           </div>
         )}
-
+        <div>
+        {availableSizes && availableSizes.length > 0 && (
+        <DynamicSizeSelector sizes={availableSizes} />
+      )}
+        </div>
         <div className="flex flex-col w-full p-4 space-y-2">
           {footerButtons.map((button: FooterButtonVariant, index) => (
             <MenuButton key={index} typeStyle={button.type} />

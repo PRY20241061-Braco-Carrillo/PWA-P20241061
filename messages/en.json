@@ -38,7 +38,8 @@
   "SizeUnit": {
     "PIECES": {
       "label": "Pieces",
-      "ariaLabel": "Quantity in pieces"
+      "ariaLabel": "Quantity in pieces",
+      "abbreviation": "pcs"
     },
     "GRAMS": {
       "label": "Grams",
@@ -76,6 +77,44 @@
       "LARGE": {
         "label": "Large",
         "ariaLabel": "Large size"
+      }
+    }
+  },
+  "Category":{
+    "label": "Category",
+    "ariaLabel": "Category",
+    "categories": {
+      "SNACK": {
+        "label": "Snacks",
+        "ariaLabel": "Snacks category"
+      },
+      "DRINK": {
+        "label": "Drinks",
+        "ariaLabel": "Drinks category"
+      },
+      "DESSERT": {
+        "label": "Desserts",
+        "ariaLabel": "Desserts category"
+      },
+      "ENTRY": {
+        "label": "Entry",
+        "ariaLabel": "Entry category"
+      },
+      "KIDS": {
+        "label": "Kids",
+        "ariaLabel": "Kids category"
+      },
+      "OFFER": {
+        "label": "Offers",
+        "ariaLabel": "Offers category"
+      },
+      "TREND": {
+        "label": "Trend",
+        "ariaLabel": "Trend category"
+      },
+      "PRINCIPAL": {
+        "label": "Principal",
+        "ariaLabel": "Principal category"
       }
     }
   }

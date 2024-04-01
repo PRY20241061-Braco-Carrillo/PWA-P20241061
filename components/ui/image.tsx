@@ -37,7 +37,6 @@ const ImageWithFallback: React.FC<ImageWithFallbackProps> = ({
     let content = '', ariaLabel = '';
     const labelDescription = imageLabels ? imageLabels[index] : '';
     const ariaLabelDescription = imageLabelsAria ? imageLabelsAria[index] : '';
-  
     if (type === "SIZE" && 'type' in value) {
       const sizeInfo: TranslatableSize = { type: value.type, info: value as SizeInfo };
       const translation = translateSizeUnit(sizeInfo);

@@ -1,8 +1,8 @@
-import { ButtonConfig, ButtonConfigRecord, ButtonsConfigSchema } from "./menu-button.types";
+import { MenuCardButtonConfig, MenuCardButtonConfigRecord, MenuCardButtonsConfigSchema } from "./menu-button.types";
 
 
 
-const rauwButtonAddConfig: ButtonConfig = {
+const rauwButtonAddConfig: MenuCardButtonConfig = {
     label: "Add",
     ariaLabel: "Add",
     ariaPressed: false,
@@ -13,7 +13,7 @@ const rauwButtonAddConfig: ButtonConfig = {
     variant: "default",
 };
 
-const rawButtonViewConfig: ButtonConfig = {
+const rawButtonViewConfig: MenuCardButtonConfig = {
     label: "View",
     ariaLabel: "View",
     ariaPressed: false,
@@ -25,7 +25,7 @@ const rawButtonViewConfig: ButtonConfig = {
     variant: "default",
 };
 
-const rawButtonArConfig: ButtonConfig = {
+const rawButtonArConfig: MenuCardButtonConfig = {
     label: "AR",
     ariaLabel: "AR",
     ariaPressed: false,
@@ -35,7 +35,7 @@ const rawButtonArConfig: ButtonConfig = {
     variant: "default",
 };
 
-const rauwButtonPromotionDetailConfig: ButtonConfig = {
+const rauwButtonPromotionDetailConfig: MenuCardButtonConfig = {
     label: "Promotion Detail",
     ariaLabel: "Promotion Detail",
     ariaPressed: false,
@@ -45,11 +45,11 @@ const rauwButtonPromotionDetailConfig: ButtonConfig = {
     variant: "default",
 };
 
-const rawButtonConfig: ButtonConfigRecord = {
+const rawButtonConfig: MenuCardButtonConfigRecord = {
     ADD: rauwButtonAddConfig,
     VIEW: rawButtonViewConfig,
     AR: rawButtonArConfig,
     PROMOTION_DETAIL: rauwButtonPromotionDetailConfig,
 };
 
-export const buttonConfig = ButtonsConfigSchema.parse(rawButtonConfig);
+export const buttonConfig = MenuCardButtonsConfigSchema.parse(rawButtonConfig);

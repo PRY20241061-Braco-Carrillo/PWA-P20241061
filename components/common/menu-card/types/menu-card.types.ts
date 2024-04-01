@@ -92,6 +92,7 @@ const MenuCardPropsSchema = z
     title: TitleSchema,
     classification: ClassificationSchema.optional(),
     footerButtons: z.array(FooterButtonVariantSchema),
+    availableSizes: z.array(SizeSchema).optional(),
     asChild: z.boolean().optional(),
     variant: MenuVariantsType,
   })

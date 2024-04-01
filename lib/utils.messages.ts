@@ -3,6 +3,7 @@ import { useTranslations } from 'next-intl';
 
 
 export function translateSizeUnit(size: TranslatableSize): { label: string; ariaLabel: string, abbreviation?: string } {
+    
     const t = useTranslations();
     const sizePrefix = 'SizeUnit.';
     let labelKey =  sizePrefix + size.type + '.label';
@@ -15,10 +16,10 @@ export function translateSizeUnit(size: TranslatableSize): { label: string; aria
         abbreviation =  t(sizePrefix + size.info.unit + '.abbreviation');
     }
     else if (size.info && size.info.type === 'DESCRIPTION') {
-        abbreviation = t(sizePrefix + size.info.description + '.abbreviation');
+        abbreviation = t(sizePrefix + size.type + '.abbreviation');
     }
     else if (size.info && size.info.type === 'PIECES') {
-        abbreviation =  t(sizePrefix + size.info.description + '.abbreviation');
+        abbreviation =  t(sizePrefix + size.type + '.abbreviation');
     }
     
     

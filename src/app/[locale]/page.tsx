@@ -1,4 +1,6 @@
 import { AccesibilityToggle } from "@/components/common/accesibility/accesibility";
+import CategoryButton from "@/components/common/category-button/category-button";
+import CategoryButtonsBentoGrid from "@/components/common/category-button/category-buttons-bento-grid";
 import { MenuCard } from "@/components/common/menu-card/menu-card";
 import { MenuCardProps } from "@/components/common/menu-card/types/menu-card.types";
 import { Button } from "@/components/ui/button";
@@ -8,6 +10,7 @@ import {
 import { EnvelopeOpenIcon } from "@radix-ui/react-icons";
 
 export default function Home() {
+  /*
   const menuCardProps: MenuCardProps = {
     variant: "discount",
     header: {
@@ -24,6 +27,23 @@ export default function Home() {
       },
       ariaLabel: "Aria label for header",
     },
+    availableSizes: [
+      {
+        type: "PIECES",
+        portion: 5,
+        description: "Small pieces",
+      },
+      {
+        type: "PIECES",
+        portion: 11,
+        description: "Large pieces",
+      },
+      {
+        type: "PIECES",
+        portion: 16,
+        description: "Big pieces",
+      }
+    ],
     ariaLabel: "Aria label for MenuCard",
     primaryImage: {
       path: "https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg",
@@ -33,9 +53,9 @@ export default function Home() {
         {
           type: "SIZE",
           value: {
-            type: "GRAMS",
-            weight: 100,
-            unit: "KG",
+            type: "PIECES",
+            portion: 10,
+            description: "Small pieces",
           },
           priority: 1,
         },
@@ -236,11 +256,13 @@ export default function Home() {
       },
     ],
     asChild: true,
-  };
+  };*/
 
   return (
     <div>
-      <AccesibilityToggle></AccesibilityToggle>
+      {
+        /*
+        <AccesibilityToggle></AccesibilityToggle>
       <div>
         <Card>
           <Button variant="default">
@@ -252,8 +274,12 @@ export default function Home() {
           <EnvelopeOpenIcon className=" h-4 w-4" />
         </Button>
         <Button variant="ghost">Ghost</Button>
-      </div>
+      </div> */
+      }
       
+      <CategoryButtonsBentoGrid></CategoryButtonsBentoGrid>
+      
+      {/* 
       <MenuCard {...menuCardProps}>
       </MenuCard>
 
@@ -264,7 +290,7 @@ export default function Home() {
       </MenuCard>
       <MenuCard {...menuCardPropsGhost}>
       </MenuCard>
-      
+      */}
       
       
     </div>

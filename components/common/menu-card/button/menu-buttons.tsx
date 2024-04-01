@@ -8,21 +8,21 @@ import { useRouter } from "next/navigation";
 import { buttonConfig } from "./button-config";
 
 import {
-    ActionTypeEnums,
-    ButtonsConfig,
-    IconComponents,
+    MenuCardActionTypeEnums,
+    MenuCardButtonsConfig,
+    MenuCardIconComponents,
 } from "./menu-button.types";
 import { cn } from "@/lib/utils";
 
 interface MenuButtonProps {
-    typeStyle: keyof ButtonsConfig;
+    typeStyle: keyof MenuCardButtonsConfig;
 }
 
 const MenuButton: React.FC<MenuButtonProps> = ({ typeStyle }) => {
     const t = useTranslations("MenuCard");
     const router = useRouter();
     const label = t("buttons." + typeStyle + ".label"); 
-    const ariaLabel = t("buttons." + typeStyle + ".label"); 
+    const ariaLabel = t("buttons." + typeStyle + ".ariaLabel"); 
 
     const config = buttonConfig[typeStyle];
     if (!config) {
@@ -33,10 +33,10 @@ const MenuButton: React.FC<MenuButtonProps> = ({ typeStyle }) => {
     const handleClick = (e: React.MouseEvent) => {
         e.preventDefault();
         switch (config.actionType) {
-            case ActionTypeEnums.addToCart:
+            case MenuCardActionTypeEnums.addToCart:
                 console.log("Add to cart");
                 break;
-            case ActionTypeEnums.navigate:
+            case MenuCardActionTypeEnums.navigate:
                 if (!config.path) {
                     console.error(
                         `Navigate action type requires a path for button type: ${typeStyle}`
@@ -45,13 +45,13 @@ const MenuButton: React.FC<MenuButtonProps> = ({ typeStyle }) => {
                 }
                 router.push(config.path);
                 break;
-            case ActionTypeEnums.ar:
+            case MenuCardActionTypeEnums.ar:
                 console.log("AR");
                 break;
-            case ActionTypeEnums.dialog:
+            case MenuCardActionTypeEnums.dialog:
                 console.log("Dialog");
                 break;
-            case ActionTypeEnums.promotionDetail:
+            case MenuCardActionTypeEnums.promotionDetail:
                 console.log("Promotion Detail");
                 break;
             default:
@@ -60,7 +60,7 @@ const MenuButton: React.FC<MenuButtonProps> = ({ typeStyle }) => {
     };
 
     const Icon = config.icon
-        ? IconComponents[config.icon as keyof typeof IconComponents]
+        ? MenuCardIconComponents[config.icon as keyof typeof MenuCardIconComponents]
         : null;
 
     return (

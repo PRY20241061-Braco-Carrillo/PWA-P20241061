@@ -38,7 +38,8 @@
   "SizeUnit": {
     "PIECES": {
       "label": "Piezas",
-      "ariaLabel": "Cantidad de piezas"
+      "ariaLabel": "Cantidad de piezas",
+      "abbreviation": "pzas"
     },
     "GRAMS": {
       "label": "Gramos",
@@ -76,6 +77,44 @@
       "LARGE": {
         "label": "Grande",
         "ariaLabel": "Tamaño grande"
+      }
+    }
+  },
+  "Category":{
+    "label": "Categoría",
+    "ariaLabel": "Categoría",
+    "categories": {
+      "SNACK": {
+        "label": "Snacks",
+        "ariaLabel": "Categoria de snacks"
+      },
+      "DRINK": {
+        "label": "Bebidas",
+        "ariaLabel": "Categoria de bebidas"
+      },
+      "DESSERT": {
+        "label": "Postres",
+        "ariaLabel": "Categoria de postres"
+      },
+      "ENTRY": {
+        "label": "Entradas",
+        "ariaLabel": "Categoria de entradas"
+      },
+      "KIDS": {
+        "label": "Niños",
+        "ariaLabel": "Categoria de niños"
+      },
+      "OFFER": {
+        "label": "Ofertas",
+        "ariaLabel": "Categoria de ofertas"
+      },
+      "TREND": {
+        "label": "Tendencia",
+        "ariaLabel": "Categoria de tendencia"
+      },
+      "PRINCIPAL": {
+        "label": "Platos de fondo",
+        "ariaLabel": "Categoria de platos de fondo"
       }
     }
   }

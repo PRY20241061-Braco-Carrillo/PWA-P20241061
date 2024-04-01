@@ -1,7 +1,7 @@
 import { CubeIcon, EyeOpenIcon, FileTextIcon, PlusCircledIcon } from "@radix-ui/react-icons";
 import { z } from "zod";
 
-export const IconComponents = {
+export const MenuCardIconComponents = {
   AddIcon: PlusCircledIcon,
   ViewIcon: EyeOpenIcon, 
   ArIcon: CubeIcon,
@@ -9,42 +9,42 @@ export const IconComponents = {
 };
 
 
-const IconNames = z.enum(Object.keys(IconComponents) as [string, ...string[]]);
+const MenuCardIconNames = z.enum(Object.keys(MenuCardIconComponents) as [string, ...string[]]);
 
 
-const ButtonVariant = z.enum([
+const MenuCardButtonVariant = z.enum([
   "default", "secondary", "ghost",
 ]);
 
-const ActionTypeEnum = z.enum([
+const MenuCardActionTypeEnum = z.enum([
   "navigate", "dialog", "ar", "addToCart", "promotionDetail",
 ]);
 
 
-export type ButtonVariant = z.infer<typeof ButtonVariant>;
-export const ActionTypeEnums = ActionTypeEnum.enum;
+export type MenuCardButtonVariant = z.infer<typeof MenuCardButtonVariant>;
+export const MenuCardActionTypeEnums = MenuCardActionTypeEnum.enum;
 
 
-export const ButtonConfigSchema = z.object({
+export const MenuCardButtonConfigSchema = z.object({
   label: z.string(),
   ariaLabel: z.string(),
   ariaPressed: z.boolean(),
   ariaExpanded: z.boolean(),
   disabled: z.boolean().optional(),
-  icon: IconNames.optional(),
-  variant: ButtonVariant,
-  actionType: ActionTypeEnum.optional(),
+  icon: MenuCardIconNames.optional(),
+  variant: MenuCardButtonVariant,
+  actionType: MenuCardActionTypeEnum.optional(),
   path: z.string().optional(), 
   id: z.string().optional(),
 });
 
 
 
-export const ButtonsConfigSchema = z.record(ButtonConfigSchema);
+export const MenuCardButtonsConfigSchema = z.record(MenuCardButtonConfigSchema);
 
-export type ButtonConfig = z.infer<typeof ButtonConfigSchema>;
-export type ButtonsConfig = z.infer<typeof ButtonsConfigSchema>;
+export type MenuCardButtonConfig = z.infer<typeof MenuCardButtonConfigSchema>;
+export type MenuCardButtonsConfig = z.infer<typeof MenuCardButtonsConfigSchema>;
 
-export const ButtonConfigRecordSchema = z.record(ButtonConfigSchema);
-export type ButtonConfigRecord = z.infer<typeof ButtonConfigRecordSchema>;
+export const MenuCardButtonConfigRecordSchema = z.record(MenuCardButtonConfigSchema);
+export type MenuCardButtonConfigRecord = z.infer<typeof MenuCardButtonConfigRecordSchema>;
 
