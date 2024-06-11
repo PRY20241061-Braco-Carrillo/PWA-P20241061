@@ -18,8 +18,12 @@ export default function RootLayout({
 }>) {
   const messages = useMessages();
   return (
-    <html lang="en" className="dark">
-      <body cz-shortcut-listen="true" className={inter.className}>
+    <html lang="en" >
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
+      </head>
+      <body className={inter.className} suppressHydrationWarning={true}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

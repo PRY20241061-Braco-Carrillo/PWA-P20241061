@@ -12,6 +12,7 @@ const nextConfig = {
       port: '',
     }], 
   },
+  
 
   webpack: (config, options) => {
     //TODO: Update this to use Preact soon as Radix supports it
