@@ -1,0 +1,35 @@
+/* styles.css */
+.page-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .header .search-bar {
+    flex-grow: 1;
+    margin-right: 20px;
+  }
+  
+  .content {
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .order-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  

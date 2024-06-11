@@ -1,0 +1,72 @@
+/* styles.css */
+.status {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .status.confirmado {
+    background-color: #34d399;
+    color: #ffffff;
+  }
+  
+  .status.pending {
+    background-color: #fbbf24;
+    color: #ffffff;
+  }
+  
+  .status.canceled {
+    background-color: #f87171;
+    color: #ffffff;
+  }
+  
+  .order-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    color: #1f2937;
+    transition: transform 0.2s;
+  }
+  
+  .order-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .order-card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .order-card .card-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  
+  .order-card .card-body p {
+    margin: 5px 0;
+    font-size: 16px;
+  }
+  
+  .order-card .card-body p strong {
+    color: #374151;
+  }
+  
+  .container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .order-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  

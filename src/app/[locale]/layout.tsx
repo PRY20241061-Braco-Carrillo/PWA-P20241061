@@ -3,6 +3,8 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { NextIntlClientProvider, useMessages } from "next-intl";
+import HorizontalSidebar from "@/components/common/Sidebar";
+
 
 const inter = Montserrat({ subsets: ["latin"] });
 
@@ -18,7 +20,7 @@ export default function RootLayout({
 }>) {
   const messages = useMessages();
   return (
-    <html lang="en" >
+    <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
@@ -31,6 +33,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <NextIntlClientProvider messages={messages}>
+            <HorizontalSidebar />
             {children}
           </NextIntlClientProvider>
         </ThemeProvider>
