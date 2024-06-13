@@ -1,121 +1,46 @@
 {
-  "MenuCard": {
-    "timeScale": {
-      "seconds": "segundos",
-      "minutes": "minutos",
-      "hours": "horas",
-      "days": "días"
-    },
-    "buttons": {
-      "ADD": {
-        "label": "Agregar",
-        "ariaLabel": "Botón de agregar"
-      },
-      "VIEW": {
-        "label": "Ver",
-        "ariaLabel": "Botón de ver"
-      },
-      "AR": {
-        "label": "Realidad aumentada",
-        "ariaLabel": "Botón de Realidad Aumentada"
-      },
-      "PROMOTION_DETAIL": {
-        "label": "Detalle promoción",
-        "ariaLabel": "Botón de detalles de la promoción"
-      }
-    },
-    "labelType": {
-      "DISCOUNT": {
-        "label": "Descuento",
-        "ariaLabel": "Etiqueta de descuento"
-      },
-      "SIZE": {
-        "label": "Tamaño",
-        "ariaLabel": "Etiqueta de tamaño"
-      }
-    }
+  "Index": {
+    "title": "Inicio",
+    "loggedIn": "Conectado como {username}",
+    "loggedOut": "Has cerrado sesión.",
+    "login": "Iniciar sesión",
+    "logout": "Cerrar sesión",
+    "secret": "Página secreta para usuarios conectados"
   },
-  "SizeUnit": {
-    "PIECES": {
-      "label": "Piezas",
-      "ariaLabel": "Cantidad de piezas",
-      "abbreviation": "pzas"
-    },
-    "GRAMS": {
-      "label": "Gramos",
-      "ariaLabel": "Peso en gramos",
-      "abbreviation": "g"
-    },
-    "KG": {
-      "label": "Kilogramos",
-      "ariaLabel": "Peso en kilogramos",
-      "abbreviation": "kg"
-    },
-    "VOLUME": {
-      "label": "Volumen",
-      "ariaLabel": "Volumen"
-    },
-    "L": {
-      "label": "Litros",
-      "ariaLabel": "Volumen en litros",
-      "abbreviation": "L"
-    },
-    "ML": {
-      "label": "Mililitros",
-      "ariaLabel": "Volumen en mililitros",
-      "abbreviation": "mL"
-    },
-    "DESCRIPTION": {
-      "SMALL": {
-        "label": "Pequeño",
-        "ariaLabel": "Tamaño pequeño"
-      },
-      "MEDIUM": {
-        "label": "Mediano",
-        "ariaLabel": "Tamaño mediano"
-      },
-      "LARGE": {
-        "label": "Grande",
-        "ariaLabel": "Tamaño grande"
-      }
-    }
+  "LocaleLayout": {
+    "title": "next-intl con ejemplo Auth.js"
   },
-  "Category":{
-    "label": "Categoría",
-    "ariaLabel": "Categoría",
-    "categories": {
-      "SNACK": {
-        "label": "Snacks",
-        "ariaLabel": "Categoria de snacks"
-      },
-      "DRINK": {
-        "label": "Bebidas",
-        "ariaLabel": "Categoria de bebidas"
-      },
-      "DESSERT": {
-        "label": "Postres",
-        "ariaLabel": "Categoria de postres"
-      },
-      "ENTRY": {
-        "label": "Entradas",
-        "ariaLabel": "Categoria de entradas"
-      },
-      "KIDS": {
-        "label": "Niños",
-        "ariaLabel": "Categoria de niños"
-      },
-      "OFFER": {
-        "label": "Ofertas",
-        "ariaLabel": "Categoria de ofertas"
-      },
-      "TREND": {
-        "label": "Tendencia",
-        "ariaLabel": "Categoria de tendencia"
-      },
-      "PRINCIPAL": {
-        "label": "Platos de fondo",
-        "ariaLabel": "Categoria de platos de fondo"
-      }
-    }
+  "Login": {
+    "title": "Iniciar sesión",
+    "email": "Correo",
+    "password": "Contraseña",
+    "submit": "Iniciar sesión",
+    "error": "{error, select, CredentialsSignin {Correo o contraseña incorrectos} other {Error desconocido}}",
+    "emailRequired": "Correo es requerido",
+    "passwordRequired": "Contraseña es requerida",
+    "invalidEmail": "Correo inválido"
+  },
+  "LocaleSwitcher": {
+    "switchLocale": "Cambiar a {locale, select, es {Español} en {Inglés} other {Desconocido}}"
+  },
+  "Secret": {
+    "title": "Página secreta",
+    "description": "Esta página es visible solo para usuarios conectados."
+  },
+  "HeaderBar": {
+    "changeLanguage": "Cambiar idioma",
+    "switchLocale": "Cambiar a {locale}",
+    "logout": "Cerrar sesión"
+  },
+  "ValidationTokenButton": {
+    "buttonText": "Token de Validación",
+    "title": "Introduce tu Token",
+    "description": "Por favor, introduce tu token de 6 dígitos.",
+    "tokenLabel": "Token",
+    "tokenRequired": "El token es obligatorio",
+    "tokenPattern": "El token debe ser un número de 6 dígitos",
+    "tokenPlaceholder": "Introduce tu token",
+    "validateButton": "Validar",
+    "closeButtonAriaLabel": "Cerrar"
   }
 }

@@ -1,5 +1,6 @@
 "use client"
 
+import { signIn } from "next-auth/react"
 import Link from "next/link"
 
 const HorizontalSidebar = () => {
@@ -9,8 +10,8 @@ const HorizontalSidebar = () => {
         <Link href="/" className="hover:text-gray-400">
           Home
         </Link>
-        <Link href="/about" className="hover:text-gray-400">
-          About
+        <Link onClick={() => signIn()} className="hover:text-gray-400" href={""}>
+          Sign In
         </Link>
         
       </div>

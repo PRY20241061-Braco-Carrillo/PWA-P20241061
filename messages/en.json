@@ -1,121 +1,46 @@
 {
-  "MenuCard": {
-    "timeScale": {
-      "seconds": "seconds",
-      "minutes": "minutes",
-      "hours": "hours",
-      "days": "days"
-    },
-    "buttons": {
-      "ADD": {
-        "label": "Add",
-        "ariaLabel": "Add button"
-      },
-      "VIEW": {
-        "label": "View",
-        "ariaLabel": "View button"
-      },
-      "AR": {
-        "label": "AR",
-        "ariaLabel": "AR button"
-      },
-      "PROMOTION_DETAIL": {
-        "label": "Promotion Details",
-        "ariaLabel": "Promotion Details button"
-      }
-    },
-    "labelType": {
-      "DISCOUNT": {
-        "label": "Discount",
-        "ariaLabel": "Discount label"
-      },
-      "SIZE": {
-        "label": "Size",
-        "ariaLabel": "Size label"
-      }
-    }
+  "Index": {
+    "title": "Home",
+    "loggedIn": "Logged in as {username}",
+    "loggedOut": "You are logged out.",
+    "login": "Login",
+    "logout": "Logout",
+    "secret": "Secret page for logged in users"
   },
-  "SizeUnit": {
-    "PIECES": {
-      "label": "Pieces",
-      "ariaLabel": "Quantity in pieces",
-      "abbreviation": "pcs"
-    },
-    "GRAMS": {
-      "label": "Grams",
-      "ariaLabel": "Weight in grams",
-      "abbreviation": "g"
-    },
-    "KG": {
-      "label": "Kilograms",
-      "ariaLabel": "Weight in kilograms",
-      "abbreviation": "kg"
-    },
-    "VOLUME": {
-      "label": "Volume",
-      "ariaLabel": "Volume in liquid measurement"
-    },
-    "L": {
-      "label": "Liters",
-      "ariaLabel": "Volume in liters",
-      "abbreviation": "L"
-    },
-    "ML": {
-      "label": "Milliliters",
-      "ariaLabel": "Volume in milliliters",
-      "abbreviation": "mL"
-    },
-    "DESCRIPTION": {
-      "SMALL": {
-        "label": "Small",
-        "ariaLabel": "Small size"
-      },
-      "MEDIUM": {
-        "label": "Medium",
-        "ariaLabel": "Medium size"
-      },
-      "LARGE": {
-        "label": "Large",
-        "ariaLabel": "Large size"
-      }
-    }
+  "LocaleLayout": {
+    "title": "next-intl with Auth.js example"
   },
-  "Category":{
-    "label": "Category",
-    "ariaLabel": "Category",
-    "categories": {
-      "SNACK": {
-        "label": "Snacks",
-        "ariaLabel": "Snacks category"
-      },
-      "DRINK": {
-        "label": "Drinks",
-        "ariaLabel": "Drinks category"
-      },
-      "DESSERT": {
-        "label": "Desserts",
-        "ariaLabel": "Desserts category"
-      },
-      "ENTRY": {
-        "label": "Entry",
-        "ariaLabel": "Entry category"
-      },
-      "KIDS": {
-        "label": "Kids",
-        "ariaLabel": "Kids category"
-      },
-      "OFFER": {
-        "label": "Offers",
-        "ariaLabel": "Offers category"
-      },
-      "TREND": {
-        "label": "Trend",
-        "ariaLabel": "Trend category"
-      },
-      "PRINCIPAL": {
-        "label": "Principal",
-        "ariaLabel": "Principal category"
-      }
-    }
+  "Login": {
+    "title": "Login",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Login",
+    "error": "{error, select, CredentialsSignin {Invalid email or password} other {Unknown error}}",
+    "emailRequired": "Email is required",
+    "passwordRequired": "Password is required",
+    "emailInvalid": "Invalid email"
+  },
+  "LocaleSwitcher": {
+    "switchLocale": "Switch to {locale, select, es {Spanish} en {English} other {Unknown}}"
+  },
+  "Secret": {
+    "title": "Secret page",
+    "description": "This page is only visible for logged in users."
+  },
+  "HeaderBar": {
+    "changeLanguage": "Change Language",
+    "switchLocale": "Switch to {locale}",
+    "logout": "Log Out"
+  },
+  "ValidationTokenButton": {
+    "buttonText": "Validation Token",
+    "title": "Enter Your Token",
+    "description": "Please enter your 6-digit token.",
+    "tokenLabel": "Token",
+    "tokenRequired": "Token is required",
+    "tokenPattern": "Token must be a 6-digit number",
+    "tokenPlaceholder": "Enter your token",
+    "validateButton": "Validate",
+    "closeButtonAriaLabel": "Close"
   }
 }

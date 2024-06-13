@@ -1,11 +1,10 @@
-export default function Home() {
- 
-  return (
-    <div>
-      <h1>
-        Hello World
-      </h1>
+import { getServerSession } from 'next-auth';
+import authConfig from '../../auth';
+import Index from '.';
+import { Session } from 'next-auth';
 
-    </div>
-  );
+export default async function IndexPage() {
+  const session = await getServerSession(authConfig) as Session | null;
+  console.log('Session data on server:', session);
+  return <Index session={session} />;
 }

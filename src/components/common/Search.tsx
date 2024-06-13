@@ -1,6 +1,6 @@
 
 import { forwardRef } from "react"
-import { cn } from "@/lib/utils"
+import { cn } from "@/src/lib/utils"
 
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons"
 import { Input } from "../ui/input"
