@@ -5,7 +5,8 @@ import { Session } from 'next-auth';
 import { useLocale, useTranslations } from 'next-intl';
 
 import Link from 'next/link';
-import DashboardPage from '../dashboard/page';
+import ProtectedDashboardPage from '../../components/dashboard/page';
+
 
 type Props = {
   session: Session | null;
@@ -19,7 +20,7 @@ export default function Index({ session }: Props) {
   return (
     <PageLayout title={t('title')}>
       {session ? (
-        <DashboardPage />
+        <ProtectedDashboardPage />
       ) : (
         <>
           <p>{t('loggedOut')}</p>

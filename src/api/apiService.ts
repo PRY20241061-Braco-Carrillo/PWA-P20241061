@@ -1,48 +1,61 @@
-import { HttpRequest, HttpResponse,  HttpError } from './types/apiTypes';
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import { attachInterceptors } from './interceptors';
+import { APIConstants } from './types/apiConstants';
+import { HttpError, HttpResponse } from './types/apiTypes';
 import { HttpMethod, HttpStatusCode } from './types/enums';
 
+class ApiService {
+  private httpClient: AxiosInstance;
+  private token: string | null;
 
-export class ApiService {
-    private async fetch<T>(request: HttpRequest): Promise<HttpResponse<T>> {
-      const { url, method, body, headers, params } = request;
-      const config: RequestInit = {
-        method,
-        headers: {
-          'Content-Type': 'application/json',
-          ...headers,
-        },
-        body: body ? JSON.stringify(body) : undefined,
+  constructor(token: string | null) {
+    this.token = token;
+    this.httpClient = axios.create({
+      baseURL: APIConstants.BASE_URL,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    attachInterceptors(this.httpClient);
+  }
+
+  private async request<T>(config: AxiosRequestConfig): Promise<HttpResponse<T>> {
+    if (this.token) {
+      config.headers = {
+        ...config.headers,
+        Authorization: `Bearer ${this.token}`,
       };
-  
-      const queryString = params ? '?' + new URLSearchParams(params).toString() : '';
-      const response = await fetch(url + queryString, config);
-      const data = await response.json();
-  
-      if (!response.ok) {
-        throw new HttpError(response.status, data.message || 'Error', data.title || '');
-      }
-  
+    }
+    try {
+      const response: AxiosResponse<T> = await this.httpClient.request(config);
       return {
         statusCode: response.status as HttpStatusCode,
-        body: data,
+        body: response.data,
       };
-    }
-  
-    public get<T>(url: string, params?: Record<string, any>, headers?: Record<string, any>) {
-      return this.fetch<T>({ url, method: HttpMethod.GET, params, headers });
-    }
-  
-    public post<T extends BodyInit | Record<string, any>, R>(url: string, body: T, headers?: Record<string, any>) {
-      return this.fetch<R>({ url, method: HttpMethod.POST, body, headers });
-    }
-  
-    public put<T extends BodyInit | Record<string, any>, R>(url: string, body: T, headers?: Record<string, any>) {
-      return this.fetch<R>({ url, method: HttpMethod.PUT, body, headers });
-    }
-  
-    public delete<T>(url: string, headers?: Record<string, any>) {
-      return this.fetch<T>({ url, method: HttpMethod.DELETE, headers });
+    } catch (error: any) {
+      if (error.response) {
+        throw new HttpError(error.response.status, error.response.data.message || 'Error', error.response.data.title || '');
+      } else {
+        throw new HttpError(HttpStatusCode.INTERNAL_SERVER_ERROR, error.message);
+      }
     }
   }
-  
-  export const apiService = new ApiService();
+
+  public get<T>(url: string, params?: Record<string, any>, headers?: Record<string, any>) {
+    return this.request<T>({ url, method: HttpMethod.GET, params, headers });
+  }
+
+  public post<T, R>(url: string, body: T, headers?: Record<string, any>) {
+    return this.request<R>({ url, method: HttpMethod.POST, data: body, headers });
+  }
+
+  public put<T, R>(url: string, body: T, headers?: Record<string, any>) {
+    return this.request<R>({ url, method: HttpMethod.PUT, data: body, headers });
+  }
+
+  public delete<T>(url: string, headers?: Record<string, any>) {
+    return this.request<T>({ url, method: HttpMethod.DELETE, headers });
+  }
+}
+
+export default ApiService;

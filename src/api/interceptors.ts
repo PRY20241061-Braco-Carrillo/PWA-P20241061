@@ -3,7 +3,6 @@ import { AxiosInstance } from 'axios';
 export const attachInterceptors = (client: AxiosInstance) => {
   client.interceptors.request.use(
     (config) => {
-      
       const token = localStorage.getItem('token');
       if (token) {
         config.headers.Authorization = `Bearer ${token}`;
@@ -15,9 +14,11 @@ export const attachInterceptors = (client: AxiosInstance) => {
   );
 
   client.interceptors.response.use(
-    (response) => response,
+    (response) => {
+      console.log('Response:', response);
+      return response;
+    },
     (error) => {
-      
       const { config, response } = error;
       if (response && response.status === 500 && !config.__isRetryRequest) {
         config.__isRetryRequest = true;
@@ -25,14 +26,5 @@ export const attachInterceptors = (client: AxiosInstance) => {
       }
       return Promise.reject(error);
     }
-  );
-
-  client.interceptors.response.use(
-    (response) => {
-      
-      console.log('Response:', response);
-      return response;
-    },
-    (error) => Promise.reject(error)
   );
 };
