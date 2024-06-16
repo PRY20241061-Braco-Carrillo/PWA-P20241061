@@ -1,8 +1,19 @@
 
+
 import { useQuery, UseQueryResult } from '@tanstack/react-query';
 import { HttpError } from '../../types/apiTypes';
 import ApiService from '../../apiService';
 import { useApiService } from '../../useApiService';
+
+interface Order {
+  orderId: string;
+  orderStatus: string;
+  tableNumber: string;
+  forTable: boolean;
+  orderRequestDate: string;
+  totalPrice: number;
+  orderRequestId: string;
+}
 
 
 const fetchOrders = async (apiService: ApiService): Promise<Order[]> => {
@@ -40,13 +51,4 @@ export const useOrders = (): UseQueryResult<Order[], HttpError> => {
     },
     enabled: !!apiService, 
   });
-};
-
-export type Order = {
-  orderId: string;
-  orderStatus: string;
-  tableNumber: string;
-  forTable: boolean;
-  orderRequestDate: string;
-  totalPrice: number;
 };

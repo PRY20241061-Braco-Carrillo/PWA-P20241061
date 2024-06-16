@@ -11,7 +11,7 @@ const buttonVariants = cva(
       variant: {
         default: " px-4 py-2 mb-2 mt-2 bg-primary text-primary-foreground shadow-sm hover:bg-primaryHover hover:shadow-md",
         secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondaryHover hover:shadow-md",
-        ghost: "bg-ghost text-ghost-foreground shadow-sm hover:bg-ghostHover hover:shadow-md",
+        ghost: "p-4 bg-ghost text-ghost-foreground shadow-sm hover:bg-ghostHover hover:shadow-md",
       },
       size: {
         default: "h-12 ",

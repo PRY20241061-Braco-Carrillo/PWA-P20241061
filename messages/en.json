@@ -41,6 +41,8 @@
     "tokenPattern": "Token must be a 6-digit number",
     "tokenPlaceholder": "Enter your token",
     "validateButton": "Validate",
-    "closeButtonAriaLabel": "Close"
+    "closeButtonAriaLabel": "Close",
+    "errorMessage": "Token is invalid. Please try again.",
+    "successMessage": "Token is valid. Your order is confirmed."
   }
 }

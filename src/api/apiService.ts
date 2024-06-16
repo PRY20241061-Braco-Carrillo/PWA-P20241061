@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 import { attachInterceptors } from './interceptors';
 import { APIConstants } from './types/apiConstants';
 import { HttpError, HttpResponse } from './types/apiTypes';
@@ -33,10 +33,11 @@ class ApiService {
         body: response.data,
       };
     } catch (error: any) {
-      if (error.response) {
-        throw new HttpError(error.response.status, error.response.data.message || 'Error', error.response.data.title || '');
+      const axiosError = error as AxiosError;
+      if (axiosError.response) {
+        throw new HttpError(axiosError.response.status, axiosError.code || axiosError.message);
       } else {
-        throw new HttpError(HttpStatusCode.INTERNAL_SERVER_ERROR, error.message);
+        throw new HttpError(HttpStatusCode.INTERNAL_SERVER_ERROR, axiosError.message);
       }
     }
   }
@@ -45,7 +46,7 @@ class ApiService {
     return this.request<T>({ url, method: HttpMethod.GET, params, headers });
   }
 
-  public post<T, R>(url: string, body: T, headers?: Record<string, any>) {
+  public post<T, R>(url: string, body?: T, headers?: Record<string, any>) {
     return this.request<R>({ url, method: HttpMethod.POST, data: body, headers });
   }
 
@@ -55,6 +56,10 @@ class ApiService {
 
   public delete<T>(url: string, headers?: Record<string, any>) {
     return this.request<T>({ url, method: HttpMethod.DELETE, headers });
+  }
+
+  public patch<T, R>(url: string, body: T, headers?: Record<string, any>) {
+    return this.request<R>({ url, method: HttpMethod.PATCH, data: body, headers });
   }
 }
 

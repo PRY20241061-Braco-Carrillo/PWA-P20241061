@@ -19,11 +19,7 @@ export const attachInterceptors = (client: AxiosInstance) => {
       return response;
     },
     (error) => {
-      const { config, response } = error;
-      if (response && response.status === 500 && !config.__isRetryRequest) {
-        config.__isRetryRequest = true;
-        return client(config);
-      }
+      console.error('Response error:', error);
       return Promise.reject(error);
     }
   );

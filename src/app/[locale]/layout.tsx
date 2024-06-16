@@ -1,4 +1,3 @@
-// [locale]/layout.tsx
 import HeaderBar from '@/src/components/layout/HeaderBar';
 import SessionWrapper from '@/src/components/layout/SessionWrapper';
 import { TokenProvider } from '@/src/context/TokenContext';

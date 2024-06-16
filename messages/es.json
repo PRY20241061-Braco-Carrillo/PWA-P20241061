@@ -41,6 +41,9 @@
     "tokenPattern": "El token debe ser un número de 6 dígitos",
     "tokenPlaceholder": "Introduce tu token",
     "validateButton": "Validar",
-    "closeButtonAriaLabel": "Cerrar"
+    "closeButtonAriaLabel": "Cerrar",
+    "errorMessage": "El token es incorrecto. Por favor, inténtalo de nuevo.",
+    "successMessage": "Token validado correctamente."
+
   }
 }

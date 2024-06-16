@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import * as Dialog from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
@@ -6,31 +6,56 @@ import { useForm } from "react-hook-form";
 import { Button } from "../../ui/button";
 import { Input } from "../../ui/input";
 import { useTranslations } from "next-intl";
+import React from "react";
 import "./styles.css";
+import { useValidationToken } from "@/src/api/domain/orders/useValidationToken";
 
 interface TokenFormValues {
   token: string;
 }
 
 const ValidationTokenButton = () => {
-  const { register, handleSubmit, reset, watch, formState: { errors }, setValue } = useForm<TokenFormValues>();
+  const { register, handleSubmit, reset, watch, formState: { errors } } = useForm<TokenFormValues>();
   const token = watch("token");
   const isTokenValid = /^[0-9]{6}$/.test(token);
+  const [submitToken, setSubmitToken] = React.useState<string | null>(null);
+  const [isDialogOpen, setIsDialogOpen] = React.useState(false);
+
   const t = useTranslations("ValidationTokenButton");
+
+  const { data, error, isLoading, isSuccess, isError } = useValidationToken(submitToken || "");
 
   const onSubmit = (data: TokenFormValues) => {
     console.log("Token submitted:", data.token);
-    reset();
+    setSubmitToken(data.token);
   };
 
   const handleDialogClose = () => {
     reset();
+    setSubmitToken(null); 
+    setIsDialogOpen(false);
   };
 
+  React.useEffect(() => {
+    console.log("isLoading:", isLoading);
+    console.log("isSuccess:", isSuccess);
+    console.log("isError:", isError);
+    console.log("Data:", data);
+    console.log("Error:", error);
+
+    if (isSuccess) {
+      const timer = setTimeout(() => {
+        handleDialogClose();
+      }, 3000); 
+
+      return () => clearTimeout(timer);
+    }
+  }, [isSuccess]);
+
   return (
-    <Dialog.Root onOpenChange={handleDialogClose}>
+    <Dialog.Root open={isDialogOpen} onOpenChange={setIsDialogOpen}>
       <Dialog.Trigger asChild>
-        <Button className="Button violet">{t("buttonText")}</Button>
+        <Button className="Button violet" onClick={() => setIsDialogOpen(true)}>{t("buttonText")}</Button>
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="DialogOverlay" />
@@ -71,6 +96,19 @@ const ValidationTokenButton = () => {
               </Button>
             </div>
           </form>
+          {submitToken && (
+            <>
+              {isLoading && (
+                <div className="ProgressBar">{t("loadingMessage")}</div>
+              )}
+              {isSuccess && (
+                <div className="SuccessMessage">{t("successMessage")}</div>
+              )}
+              {isError && (
+                <div className="ErrorMessage">{t("errorMessage")}</div>
+              )}
+            </>
+          )}
           <Dialog.Close asChild>
             <button className="IconButton" aria-label={t("closeButtonAriaLabel")}>
               <Cross2Icon />
