@@ -2,12 +2,14 @@ import React, { useState, forwardRef } from "react";
 import { cn } from "@/src/lib/utils";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { Input } from "../ui/input";
+import { useTranslations } from "next-intl";
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   onSearch: (query: string) => void;
 }
 
 const SearchBar = forwardRef<HTMLInputElement, InputProps>(({ className, onSearch, ...props }, ref) => {
+  const t = useTranslations("Search");
   const [inputValue, setInputValue] = useState("");
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,11 +29,11 @@ const SearchBar = forwardRef<HTMLInputElement, InputProps>(({ className, onSearc
         ref={ref}
         value={inputValue}
         onChange={handleInputChange}
-        placeholder="Search..."
+        placeholder={t("searchPlaceholder")}
         {...props}
       />
       <button onClick={handleSearchClick} className="absolute top-1/2 right-3 transform -translate-y-1/2">
-        Search
+        {t("search")}
       </button>
     </div>
   );

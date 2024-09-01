@@ -29,7 +29,9 @@
     margin: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     color: #1f2937;
-    transition: transform 0.2s;
+    transition: transform 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
   }
   
   .order-card:hover {
@@ -89,7 +91,6 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  overflow-y: auto;
 }
 
 .order-details-title {
@@ -123,4 +124,119 @@
   position: absolute;
   top: 10px;
   right: 10px;
+}
+
+
+.order-list-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.order-column {
+  margin-bottom: 20px;
+}
+
+
+.order-card .order-actions {
+  margin-top: auto;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.order-status {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.order-status.confirmado {
+  background-color: #34d399;
+  color: #ffffff;
+}
+
+.order-status.en_preparacion {
+  background-color: #fbbf24;
+  color: #ffffff;
+}
+
+.order-status.servido {
+  background-color: #4f46e5;
+  color: #ffffff;
+}
+
+.order-status.entregado {
+  background-color: #10b981;
+  color: #ffffff;
+}
+
+
+.dialog-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+}
+
+.dialog-content {
+  background-color: #ffffff; /* Fondo blanco */
+  border-radius: 12px; /* Bordes suaves */
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  max-height: 80vh;
+  margin: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #1f2937; /* Texto en un color oscuro */
+
+  z-index: 1000;
+}
+
+.dialog-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1f2937; /* Texto en un color oscuro */
+  margin-bottom: 20px;
+}
+
+.dialog-loading,
+.dialog-error {
+  font-size: 16px;
+  color: #ef4444; /* Rojo para errores */
+}
+
+.dialog-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dialog-close-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.dialog-content h2, 
+.dialog-content h3, 
+.dialog-content p {
+  margin: 10px 0;
+  color: #1f2937;
+}
+
+.dialog-content .button {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
 }

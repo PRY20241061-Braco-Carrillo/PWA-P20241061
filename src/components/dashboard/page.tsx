@@ -9,10 +9,10 @@ import { useOrderByTableNumber } from "@/src/api/domain/orders/useOrderByTableNu
 import OrderCard from "../common/order/OrderCard";
 import { useState } from "react";
 import { useOrders } from "@/src/api/domain/orders/useOrder";
+import { OrderProvider } from "../common/order/OrderContext";
 
 const DashboardPage = () => {
   const { data: session } = useSession();
-
   const userRole = session?.user?.data?.roles;
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -37,35 +37,34 @@ const DashboardPage = () => {
   };
 
   return (
-    <div className="page-container">
-      <div className="header">
-      {session?.user?.data?.roles === "ROLE_WAITER" && (
-        <SearchBar onSearch={handleSearch} />
-        )}
-        {" "}
-        {session?.user?.data?.roles === "ROLE_WAITER" && (
-          <ValidationTokenButton />
-        )}
+    <OrderProvider>
+      <div className="page-container">
+        <div className="header">
+          {session?.user?.data?.roles === "ROLE_WAITER" && (
+            <SearchBar onSearch={handleSearch} />
+          )}
+          {session?.user?.data?.roles === "ROLE_WAITER" && (
+            <ValidationTokenButton />
+          )}
+        </div>
+        <div className="content">
+          {searchQuery.trim() && searchResult ? (
+            <OrderCard
+              orderId={searchResult.data.orderId}
+              orderStatus={searchResult.data.orderStatus}
+              tableNumber={searchResult.data.tableNumber}
+              forTable={searchResult.data.forTable}
+              orderRequestDate={new Date(searchResult.data.orderRequestDate).toLocaleString()}
+              totalPrice={searchResult.data.totalPrice}
+              userRole={userRole!}
+              orderRequestId={searchResult.data.orderRequestId}
+            />
+          ) : (
+            <OrderListWrapper userRole={userRole!} />
+          )}
+        </div>
       </div>
-      <div className="content">
-        {searchQuery.trim() && searchResult ? (
-          <OrderCard
-            orderId={searchResult.data.orderId}
-            orderStatus={searchResult.data.orderStatus}
-            tableNumber={searchResult.data.tableNumber}
-            forTable={searchResult.data.forTable}
-            orderRequestDate={new Date(
-              searchResult.data.orderRequestDate
-            ).toLocaleString()}
-            totalPrice={searchResult.data.totalPrice}
-            userRole={userRole!}
-            orderRequestId={searchResult.data.orderRequestId}
-          />
-        ) : (
-          <OrderListWrapper userRole={userRole!} />
-        )}
-      </div>
-    </div>
+    </OrderProvider>
   );
 };
 

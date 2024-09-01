@@ -1,6 +1,5 @@
 // components/OrderList.tsx
 "use client";
-
 import React from 'react';
 import OrderCard from './OrderCard';
 import "./styles.css";
@@ -15,7 +14,6 @@ interface Order {
   totalPrice: number;
   orderRequestId: string;
 }
-
 
 interface OrderListProps {
   userRole: string;
@@ -41,16 +39,17 @@ const OrderList: React.FC<OrderListProps> = ({ userRole }) => {
   };
 
   orders?.forEach(order => {
-    ordersByStatus[order.orderStatus as Order['orderStatus']].push(order as Order);
+    if (order && order.orderStatus) {
+      ordersByStatus[order.orderStatus as Order['orderStatus']]?.push(order as Order);
+    }
   });
 
-
   return (
-    <div className="order-list-container">
+    <div className="order-list-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       {Object.keys(ordersByStatus).map(status => (
         <div key={status} className="order-column">
-          <h2>{status.replace('_', ' ')}</h2>
-          {ordersByStatus[status as Order['orderStatus']].map(order => (
+          <h2 className="text-xl font-bold mb-4">{status.replace('_', ' ')}</h2>
+          {ordersByStatus[status as Order['orderStatus']]?.map(order => (
             <OrderCard
               key={order.orderId}
               orderId={order.orderId}

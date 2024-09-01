@@ -30,7 +30,9 @@
   "HeaderBar": {
     "changeLanguage": "Change Language",
     "switchLocale": "Switch to {locale}",
-    "logout": "Log Out"
+    "logout": "Log Out",
+    "reservations": "Reservations",
+    "orders": "Orders"
   },
   "ValidationTokenButton": {
     "buttonText": "Validation Token",
@@ -44,5 +46,40 @@
     "closeButtonAriaLabel": "Close",
     "errorMessage": "Token is invalid. Please try again.",
     "successMessage": "Token is valid. Your order is confirmed."
+  },
+  "OrderCard": {
+    "orderId": "Order ID",
+    "status": "Status",
+    "tableNumber": "Table Number",
+    "forTable": "For table",
+    "orderDate": "Order Date",
+    "total": "Total"
+  },
+  "Search": {
+    "search": "Search",
+    "searchPlaceholder": "Search orders"
+  },
+  "OrderDetails":{
+    "title": "Order details",
+    "orderId": "Order ID",
+    "status": "Status",
+    "tableNumber": "Table number",
+    "orderDate": "Order date",
+    "total": "Total",
+    "items": "Items",
+    "quantity": "Quantity",
+    "amount": "Amount",
+    "price": "Price",
+    "totalPrice": "Total price",
+    "close": "Close",
+    "products": "Products",
+    "combos": "Combos",
+    "complements" : "Complements",
+    "menus": "Menus",
+    "promotions": "Promotions",
+    "name": "Name",
+    "product": "Product",
+    "complement": "Complement",
+    "detail": "Detail"
   }
 }

@@ -30,7 +30,9 @@
   "HeaderBar": {
     "changeLanguage": "Cambiar idioma",
     "switchLocale": "Cambiar a {locale}",
-    "logout": "Cerrar sesión"
+    "logout": "Cerrar sesión",
+    "reservations": "Reservations",
+    "orders": "Orders"
   },
   "ValidationTokenButton": {
     "buttonText": "Token de Validación",
@@ -44,6 +46,42 @@
     "closeButtonAriaLabel": "Cerrar",
     "errorMessage": "El token es incorrecto. Por favor, inténtalo de nuevo.",
     "successMessage": "Token validado correctamente."
+
+  },
+  "OrderCard": {
+    "orderId": "ID de pedido",
+    "status": "Estado",
+    "tableNumber": "Número de mesa",
+    "forTable": "Para la mesa",
+    "orderDate": "Fecha de pedido",
+    "total": "Total"
+  },
+  "Search": {
+    "search": "Buscar",
+    "searchPlaceholder": "Buscar pedidos"
+  },
+  "OrderDetails":{
+    "title": "Detalles del pedido",
+    "orderId": "ID de pedido",
+    "status": "Estado",
+    "tableNumber": "Número de mesa",
+    "orderDate": "Fecha de pedido",
+    "total": "Total",
+    "items": "Artículos",
+    "quantity": "Cantidad",
+    "price": "Precio",
+    "totalPrice": "Precio total",
+    "amount": "Cantidad",
+    "close": "Cerrar",
+    "products": "Productos",
+    "combos": "Combos",
+    "complements" : "Complementos",
+    "menus": "Menús",
+    "promotions": "Promociones",
+    "name": "Nombre",
+    "product": "Producto",
+    "complement": "Complemento",
+    "detail": "Detalle"
 
   }
 }
