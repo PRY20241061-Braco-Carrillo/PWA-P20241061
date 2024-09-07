@@ -1,4 +1,3 @@
-// components/ReservationsGrid.tsx
 "use client";
 
 import { Box, Card, Text, Flex, Button } from '@radix-ui/themes';
@@ -15,8 +14,18 @@ const ReservationsGrid: React.FC = () => {
     return <div>Loading...</div>;
   }
 
-  if (error || !reservations) {
+  if (error) {
     return <div>Error loading reservations.</div>;
+  }
+
+  if (!reservations || reservations.length === 0) {
+    return (
+      <Box className="container">
+        <Text size="3" weight="bold" className="text-center text-gray-700">
+          No existen reservas en este momento.
+        </Text>
+      </Box>
+    );
   }
 
   const handleConfirm = (reservationId: string) => {
@@ -58,8 +67,8 @@ const ReservationsGrid: React.FC = () => {
   return (
     <Box className="container">
       <Flex gap="20px" className="order-list">
-        {reservations.map((reservation) => (
-          <Card key={reservation.reservationId} className="order-card">
+        {reservations.map((reservation, index) => (
+          <Card key={`${reservation.reservationId}-${index}`} className="order-card">
             <Text size="2" weight="bold">{reservation.reservationId}</Text>
             <br />
             <Text>Status: <span className={`status ${reservation.reservationStatus}`}>{reservation.reservationStatus}</span></Text>

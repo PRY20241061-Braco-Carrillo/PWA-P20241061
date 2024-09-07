@@ -4,6 +4,7 @@ import { useQuery, UseQueryResult } from '@tanstack/react-query';
 import { HttpError } from '../../types/apiTypes';
 import ApiService from '../../apiService';
 import { useApiService } from '../../useApiService';
+import { useSession } from 'next-auth/react';
 
  interface Reservation {
     reservationId:     string;
@@ -17,10 +18,10 @@ import { useApiService } from '../../useApiService';
 
 
 
-const fetchOrders = async (apiService: ApiService): Promise<Reservation[]> => {
+const fetchOrders = async (apiService: ApiService, campusId: string): Promise<Reservation[]> => {
   try {
     const response = await apiService.get<{ code: string; data: Reservation[] }>(
-      '/reservation/campus/8c81aabb-dc05-4cf1-b9b3-1e3d3fd64ee2'
+      `/reservation/campus/${campusId}`
     );
 
     console.log('API response:', response);
@@ -41,15 +42,16 @@ const fetchOrders = async (apiService: ApiService): Promise<Reservation[]> => {
 
 export const useReservations = (): UseQueryResult<Reservation[], HttpError> => {
   const apiService = useApiService();
+  const { data: session } = useSession(); 
 
   return useQuery<Reservation[], HttpError>({
-    queryKey: ['orders'],
+    queryKey: ['orders', session?.user?.data?.campusId], 
     queryFn: () => {
-      if (!apiService) {
-        return Promise.reject(new Error('No token available'));
+      if (!apiService || !session?.user?.data?.campusId) { 
+        return Promise.reject(new Error('No token or campusId available'));
       }
-      return fetchOrders(apiService);
+      return fetchOrders(apiService, session.user.data.campusId); 
     },
-    enabled: !!apiService, 
+    enabled: !!apiService && !!session?.user?.data?.campusId, 
   });
 };

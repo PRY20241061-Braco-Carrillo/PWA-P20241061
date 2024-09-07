@@ -39,7 +39,7 @@ const DashboardPage = () => {
   return (
     <OrderProvider>
       <div className="page-container">
-        <div className="header">
+        <div className="header gap-6">
           {session?.user?.data?.roles === "ROLE_WAITER" && (
             <SearchBar onSearch={handleSearch} />
           )}

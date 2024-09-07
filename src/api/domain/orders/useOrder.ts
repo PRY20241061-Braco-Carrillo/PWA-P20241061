@@ -4,6 +4,7 @@ import { useQuery, UseQueryResult } from '@tanstack/react-query';
 import { HttpError } from '../../types/apiTypes';
 import ApiService from '../../apiService';
 import { useApiService } from '../../useApiService';
+import { useSession } from 'next-auth/react';
 
 interface Order {
   orderId: string;
@@ -16,10 +17,10 @@ interface Order {
 }
 
 
-const fetchOrders = async (apiService: ApiService): Promise<Order[]> => {
+const fetchOrders = async (apiService: ApiService, campusId: string): Promise<Order[]> => {
   try {
     const response = await apiService.get<{ code: string; data: Order[] }>(
-      '/order/campus/8c81aabb-dc05-4cf1-b9b3-1e3d3fd64ee2'
+      `/order/campus/${campusId}`
     );
 
     console.log('API response:', response);
@@ -40,15 +41,17 @@ const fetchOrders = async (apiService: ApiService): Promise<Order[]> => {
 
 export const useOrders = (): UseQueryResult<Order[], HttpError> => {
   const apiService = useApiService();
+  const { data: session } = useSession(); 
+
 
   return useQuery<Order[], HttpError>({
-    queryKey: ['orders'],
+    queryKey: ['orders', session?.user?.data?.campusId],
     queryFn: () => {
-      if (!apiService) {
+      if (!apiService || !session?.user?.data?.campusId) {
         return Promise.reject(new Error('No token available'));
       }
-      return fetchOrders(apiService);
+      return fetchOrders(apiService, session.user.data.campusId);
     },
-    enabled: !!apiService, 
+    enabled: !!apiService  && !!session?.user?.data?.campusId, 
   });
 };

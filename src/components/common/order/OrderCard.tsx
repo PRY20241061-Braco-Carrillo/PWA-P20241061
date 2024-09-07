@@ -109,9 +109,9 @@ const OrderCard: React.FC<OrderCardProps> = ({
               }}>Detalle</Button>
             )}
             {userRole === 'ROLE_WAITER' && (
-              <Button variant='default' onClick={() => setIsDeleteDialogOpen(true)}>Delete Order</Button>
+              <Button variant='default' onClick={() => setIsDeleteDialogOpen(true)}>{t("deleteOrder")}</Button>
             )}
-            {userRole === 'ROLE_CHEF' && (
+            {userRole === 'ROLE_CHEF' || userRole === 'ROLE_WAITER' && (
               orderStatus !== 'ENTREGADO' && (
                 <Button variant='default' onClick={handleUpdateStatus}>Actualizar Estado</Button>
               )
@@ -144,7 +144,7 @@ const OrderCard: React.FC<OrderCardProps> = ({
                         <Text>{tD('name')}: {product.name}</Text>
                         <br />
                         <Text>{tD('amount')}: {product.productAmount}</Text>
-                        {product.detail && <Text>Detail: {product.detail}</Text>}
+                        {product.detail && <Text> {tD('detail')}: {product.detail}</Text>}
                       </Box>
                     ))}
                   </Box>

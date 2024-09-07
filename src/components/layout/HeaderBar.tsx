@@ -2,12 +2,11 @@
 
 import { signOut, useSession } from "next-auth/react";
 import { useLocale, useTranslations } from "next-intl";
-import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
+import { Button } from "../ui/button";
 
 export default function HeaderBar() {
   const locale = useLocale();
-
   const { data: session } = useSession();
   const t = useTranslations('HeaderBar');
   const router = useRouter();
@@ -17,7 +16,7 @@ export default function HeaderBar() {
   };
 
   const handleOrders = () => {
-    router.push("/" + locale );
+    router.push("/" + locale);
   }
 
   const handleReservations = () => {
@@ -25,23 +24,37 @@ export default function HeaderBar() {
   }
 
   return (
-    <div className="header-bar">
-      {session && (
-        <Button onClick={handleLogout}>
-          {t("logout")}
-        </Button>
-      )}
-{session && (
-        <Button onClick={handleOrders}>
-          {t("orders")}
-        </Button>
-      )}
+    <header className="bg-white shadow-md">
+      <div className="container mx-auto flex items-center justify-between py-4 px-6">
+        <div className="flex items-center text-black text-2xl">
+          Yumful
+        </div>
 
-{session && (
-        <Button onClick={handleReservations}>
-          {t("reservations")}
-        </Button>
-      )}
-    </div>
+        <div className="flex items-center space-x-4">
+          {session && (
+            <>
+              <Button 
+                onClick={handleOrders}
+                className="bg-blue-500 text-white hover:bg-blue-600 active:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 transition-colors rounded-lg px-4 py-2"
+              >
+                {t("orders")}
+              </Button>
+              <Button 
+                onClick={handleReservations}
+                className="bg-green-500 text-white hover:bg-green-600 active:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75 transition-colors rounded-lg px-4 py-2"
+              >
+                {t("reservations")}
+              </Button>
+              <Button 
+                onClick={handleLogout}
+                className="bg-red-500 text-white hover:bg-red-600 active:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75 transition-colors rounded-lg px-4 py-2"
+              >
+                {t("logout")}
+              </Button>
+            </>
+          )}
+        </div>
+      </div>
+    </header>
   );
 }

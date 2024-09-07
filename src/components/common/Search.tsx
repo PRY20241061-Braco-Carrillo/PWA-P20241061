@@ -21,7 +21,7 @@ const SearchBar = forwardRef<HTMLInputElement, InputProps>(({ className, onSearc
   };
 
   return (
-    <div className="relative w-full max-w-xs">
+    <div className="relative w-full">
       <MagnifyingGlassIcon className="absolute top-1/2 left-3 transform -translate-y-1/2 h-5 w-5 text-gray-500" />
       <Input
         type="text"

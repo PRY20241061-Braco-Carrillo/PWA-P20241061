@@ -53,7 +53,9 @@
     "tableNumber": "Table Number",
     "forTable": "For table",
     "orderDate": "Order Date",
-    "total": "Total"
+    "total": "Total",
+    "deleteOrder" : "Delete order"
+
   },
   "Search": {
     "search": "Search",
@@ -80,6 +82,5 @@
     "name": "Name",
     "product": "Product",
     "complement": "Complement",
-    "detail": "Detail"
-  }
+    "detail": "Detail"  }
 }
