@@ -65,7 +65,9 @@
     "en_preparacion": "IN PROGRESS",
     "confirmado": "CONFIRMED",
     "entregado": "DELIVERED",
-    "servido": "SERVED"
+    "servido": "SERVED",
+    "view_more": "View more",
+    "view_less": "View less"
   },
   "OrderDetails": {
     "title": "Order details",

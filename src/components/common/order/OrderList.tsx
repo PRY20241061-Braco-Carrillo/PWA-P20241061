@@ -76,7 +76,7 @@ const OrderList: React.FC<OrderListProps> = ({ userRole }) => {
                   onClick={() => setShowMoreDelivered(!showMoreDelivered)}
                   className="mt-4 text-blue-500 hover:text-blue-700 focus:outline-none focus:underline"
                 >
-                  {showMoreDelivered ? 'Ver menos' : 'Ver más'}
+                  {showMoreDelivered ? t("view_less") : t("view_more")}
                 </button>
               )}
             </div>
