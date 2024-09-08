@@ -1,6 +1,7 @@
 "use client";
 
 import { Box, Card, Text, Flex, Button } from '@radix-ui/themes';
+import { useTranslations } from 'next-intl';
 import './styles.css';
 import React from 'react';
 import { useReservations } from '@/src/api/domain/orders/useReservation';
@@ -9,20 +10,21 @@ import { useChangeReservationStatus } from '@/src/api/domain/orders/useUpdateRes
 const ReservationsGrid: React.FC = () => {
   const { data: reservations, isLoading, error, refetch } = useReservations();
   const { mutate: changeStatus } = useChangeReservationStatus();
+  const t = useTranslations('Reservations');
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div>{t('loading')}</div>;
   }
 
   if (error) {
-    return <div>Error loading reservations.</div>;
+    return <div>{t('error')}</div>;
   }
 
   if (!reservations || reservations.length === 0) {
     return (
       <Box className="container">
         <Text size="3" weight="bold" className="text-center text-gray-700">
-          No existen reservas en este momento.
+          {t('noReservations')}
         </Text>
       </Box>
     );
@@ -71,36 +73,38 @@ const ReservationsGrid: React.FC = () => {
           <Card key={`${reservation.reservationId}-${index}`} className="order-card">
             <Text size="2" weight="bold">{reservation.reservationId}</Text>
             <br />
-            <Text>Status: <span className={`status ${reservation.reservationStatus}`}>{reservation.reservationStatus}</span></Text>
+            <Text>
+              {t('status')}: <span className={`status-${reservation.reservationStatus.toLowerCase()}`}>{t(`statusI.${reservation.reservationStatus}`)}</span>
+            </Text>
             <br />
-            <Text>Date: {new Date(reservation.reservationDate).toLocaleDateString()}</Text>
+            <Text>{t('date')}: {new Date(reservation.reservationDate).toLocaleDateString()}</Text>
             <br />
-            <Text>Qualification: {reservation.userQualification}</Text>
+            <Text>{t('qualification')}: {reservation.userQualification}</Text>
             <br />
-            <Text>Order Request ID: {reservation.orderRequestId}</Text>
+            <Text>{t('orderRequestId')}: {reservation.orderRequestId}</Text>
             <br />
             {reservation.reservationStatus === 'POR_CONFIRMAR' && (
-              <div className="button-group">
+              <div className="button-group  p-2">
                 <Button
                   onClick={() => handleConfirm(reservation.reservationId)}
-                  className="confirm-button"
+                  className="confirm-button p-2"
                 >
-                  CONFIRMAR RESERVA
+                  {t('confirmReservation')}
                 </Button>
                 <Button
                   onClick={() => handleDeny(reservation.reservationId)}
-                  className="deny-button"
+                  className="deny-button  p-2"
                 >
-                  DENEGAR RESERVA
+                  {t('denyReservation')}
                 </Button>
               </div>
             )}
             {reservation.reservationStatus !== 'CANCELADO_ADMIN' && reservation.reservationStatus !== 'CANCELADO_USUARIO' && (
               <Button
                 onClick={() => handleCancel(reservation.reservationId)}
-                className="cancel-button"
+                className="cancel-button  p-2"
               >
-                CANCELAR RESERVA
+                {t('cancelReservation')}
               </Button>
             )}
           </Card>

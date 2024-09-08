@@ -102,18 +102,18 @@ const OrderCard: React.FC<OrderCardProps> = ({
             <Text as="div" size="2" color="gray"><strong>{t("total")}:</strong> ${totalPrice.toFixed(2)}</Text>
           </Box>
           <Box className="flex space-x-4"> 
-            {(userRole === 'ROLE_WAITER' || userRole === 'ROLE_CHEF') && (
+            {(userRole === 'ROLE_WAITER' || userRole === 'ROLE_CHEF' || userRole === 'ROLE_ADMIN') && (
               <Button variant='default' onClick={() => {
                 setIsDetailDialogOpen(true);
                 handleFetchDetails();
               }}>Detalle</Button>
             )}
-            {userRole === 'ROLE_WAITER' && (
+            {userRole === 'ROLE_WAITER' || userRole === 'ROLE_ADMIN' && (
               orderStatus !== 'ENTREGADO' && (
               <Button variant='default' onClick={() => setIsDeleteDialogOpen(true)}>{t("deleteOrder")}</Button>
             )
             )}
-            {userRole === 'ROLE_CHEF' || userRole === 'ROLE_WAITER' && (
+            {userRole === 'ROLE_CHEF' || userRole === 'ROLE_WAITER' || userRole === 'ROLE_ADMIN' && (
               orderStatus !== 'ENTREGADO' && (
                 <Button variant='default' onClick={handleUpdateStatus}>Actualizar Estado</Button>
               )

@@ -47,7 +47,8 @@ const DashboardPage = () => {
     <OrderProvider>
       <div className="page-container">
         <div className="header gap-6">
-          {session?.user?.data?.roles === "ROLE_WAITER" && (
+          {session?.user?.data?.roles === "ROLE_WAITER" 
+          || session?.user?.data?.roles === "ROLE_ADMIN"  && (
             <>
               <SearchBar onSearch={handleSearch} />
               <ValidationTokenButton />

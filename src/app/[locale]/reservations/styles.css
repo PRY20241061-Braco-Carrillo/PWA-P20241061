@@ -1,121 +1,83 @@
-/* styles.css */
+/* Mejoras en los estilos del componente */
+
 .order-card {
-    background-color: #ffffff;
-    border-radius: 12px;
-    padding: 20px;
-    margin: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    color: #1f2937;
-    transition: transform 0.2s;
-  }
-  
-  .order-card:hover {
-    transform: scale(1.05);
-  }
-  
-  .order-card .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-  }
-  
-  .order-card .card-header h3 {
-    margin: 0;
-    font-size: 18px;
-    font-weight: 500;
-  }
-  
-  .order-card .card-body p {
-    margin: 5px 0;
-    font-size: 16px;
-  }
-  
-  .order-card .card-body p strong {
-    color: #374151;
-  }
-  
-  .container {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .order-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
-  .order-details-overlay {
-    background-color: rgba(0, 0, 0, 0.5);
-    position: fixed;
-    inset: 0;
-  }
-  
-  .order-details-content {
-    border-radius: 8px;
-    padding: 20px;
-    max-width: 600px;
-    max-height: 80vh;
-    margin: auto;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
-  .order-details-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-  .order-details-loading,
-  .order-details-error {
-    font-size: 16px;
-    color: #ef4444;
-  }
-  
-  .order-details-box {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .order-detail-item {
-    padding: 10px;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-  }
-  
-  .order-details-close-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-  }
-  
-  /* styles.css */
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  margin: 15px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  color: #1f2937;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.order-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.status-por_confirmar {
+  color: #f59e0b; /* Amarillo */
+}
+
+.status-confirmado {
+  color: #10b981; /* Verde */
+}
+
+.status-denegado {
+  color: #ef4444; /* Rojo */
+}
+
+.status-en_preparacion {
+  color: #3b82f6; /* Azul */
+}
+
+.status-cancelado_admin,
+.status-cancelado_usuario {
+  color: #6b7280; /* Gris */
+}
+
+.status-entregado {
+  color: #10b981; /* Verde */
+}
+
 .button-group {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
-  }
-  
-  .confirm-button {
-    background-color: green;
-    color: white;
-  }
-  
-  .deny-button {
-    background-color: orangered;
-    color: white;
-  }
-  
-  .cancel-button {
-    background-color: red;
-    color: white;
-  }
+  display: flex;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.confirm-button {
+  background-color: #10b981;
+  color: white;
+  border-radius: 8px;
+  padding: 10px 16px;
+  transition: background-color 0.2s;
+}
+
+.confirm-button:hover {
+  background-color: #059669;
+}
+
+.deny-button {
+  background-color: #ef4444;
+  color: white;
+  border-radius: 8px;
+  padding: 10px 16px;
+  transition: background-color 0.2s;
+}
+
+.deny-button:hover {
+  background-color: #dc2626;
+}
+
+.cancel-button {
+  background-color: #f59e0b;
+  color: white;
+  border-radius: 8px;
+  padding: 10px 16px;
+  transition: background-color 0.2s;
+}
+
+.cancel-button:hover {
+  background-color: #d97706;
+}

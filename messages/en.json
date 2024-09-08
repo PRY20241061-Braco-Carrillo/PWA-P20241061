@@ -91,5 +91,28 @@
     "product": "Product",
     "complement": "Complement",
     "detail": "Detail"
+  },
+  "Reservations":
+  {
+    "loading": "Loading...",
+    "error": "Error loading reservations.",
+    "noReservations": "No reservations at this moment.",
+    "status": "Status",
+    "statusI": {
+      "POR_CONFIRMAR": "Pending Confirmation",
+      "CONFIRMADO": "Confirmed",
+      "DENEGADO": "Denied",
+      "EN_PREPARACION": "In Preparation",
+      "CANCELADO_ADMIN": "Cancelled by Admin",
+      "CANCELADO_USUARIO": "Cancelled by User",
+      "ENTREGADO": "Delivered"
+    },
+    "date": "Date",
+    "qualification": "Qualification",
+    "orderRequestId": "Order Request ID",
+    "confirmReservation": "Confirm Reservation",
+    "denyReservation": "Deny Reservation",
+    "cancelReservation": "Cancel Reservation"
   }
+  
 }

@@ -92,5 +92,27 @@
     "product": "Producto",
     "complement": "Complemento",
     "detail": "Detalle"
+  },
+  "Reservations" : {
+    "loading": "Cargando...",
+    "error": "Error al cargar las reservas.",
+    "noReservations": "No existen reservas en este momento.",
+    "status": "Estado",
+    "statusI": {
+      "POR_CONFIRMAR": "Por Confirmar",
+      "CONFIRMADO": "Confirmado",
+      "DENEGADO": "Denegado",
+      "EN_PREPARACION": "En Preparación",
+      "CANCELADO_ADMIN": "Cancelado por el Administrador",
+      "CANCELADO_USUARIO": "Cancelado por el Usuario",
+      "ENTREGADO": "Entregado"
+    },
+    "date": "Fecha",
+    "qualification": "Calificación",
+    "orderRequestId": "ID de la Solicitud de Pedido",
+    "confirmReservation": "Confirmar Reserva",
+    "denyReservation": "Denegar Reserva",
+    "cancelReservation": "Cancelar Reserva"
   }
+  
 }
