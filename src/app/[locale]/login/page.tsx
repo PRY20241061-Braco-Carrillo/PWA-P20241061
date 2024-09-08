@@ -1,14 +1,15 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useLocale, useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import PageLayout from "@/src/components/layout/PageLayout";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Label } from "@/src/components/ui/label";
 import { Input } from "@/src/components/ui/input";
 import { Button } from "@/src/components/ui/button";
+import Spinner from "@/src/components/ui/spinner";
 
 interface LoginFormInputs {
   email: string;
@@ -18,27 +19,53 @@ interface LoginFormInputs {
 export default function Login() {
   const locale = useLocale();
   const t = useTranslations("Login");
-  const { register, handleSubmit, formState: { errors } } = useForm<LoginFormInputs>();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<LoginFormInputs>();
   const [error, setError] = useState<string>();
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const { data: session, status } = useSession(); 
 
   const onSubmit = async (data: LoginFormInputs) => {
     if (error) setError(undefined);
-  
+    setLoading(true);
+
     const result = await signIn("credentials", {
       email: data.email,
       password: data.password,
       redirect: false,
     });
-  
+
     if (result?.error) {
-      setError(result.error);
+      if (result.error.includes("No puedes iniciar sesión con este usuario")) {
+        setError("No se permite el acceso para usuarios con el rol 'CLIENTE'");
+        reset();
+      } else {
+        setError(result.error);
+        reset();
+      }
     } else {
-      // Redirige al usuario a la página de inicio y asegura que la sesión se vuelva a cargar
-      router.replace("/" + locale);
+      setLoading(false);
     }
   };
-  
+
+  useEffect(() => {
+    if (status === "authenticated" && session?.user?.data?.roles?.includes("ROLE_CLIENT")) {
+      setError("No se permite el acceso para usuarios con el rol 'CLIENTE'");
+      reset(); 
+      setLoading(false);
+    } else if (status === "authenticated") {
+
+      router.replace("/" + locale);
+    }
+  }, [status, session, locale, router, reset]);
+
+  if (loading || status === "loading") {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <Spinner />
+      </div>
+    );
+  }
 
   return (
     <PageLayout title={t("title")}>
@@ -75,7 +102,7 @@ export default function Login() {
           )}
         </Label>
         {error && (
-          <p className="text-sm text-red-600 text-center">{t("error", { error })}</p>
+          <p className="text-sm text-red-600 text-center">{error}</p>
         )}
         <Button
           type="submit"

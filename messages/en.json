@@ -54,14 +54,20 @@
     "forTable": "For table",
     "orderDate": "Order Date",
     "total": "Total",
-    "deleteOrder" : "Delete order"
-
+    "deleteOrder": "Delete order"
   },
   "Search": {
     "search": "Search",
-    "searchPlaceholder": "Search orders"
+    "searchPlaceholder": "Search orders",
+    "minCharactersError": "Please enter at least 3 characters"
   },
-  "OrderDetails":{
+  "OrderStatus": {
+    "en_preparacion": "IN PROGRESS",
+    "confirmado": "CONFIRMED",
+    "entregado": "DELIVERED",
+    "servido": "SERVED"
+  },
+  "OrderDetails": {
     "title": "Order details",
     "orderId": "Order ID",
     "status": "Status",
@@ -76,11 +82,12 @@
     "close": "Close",
     "products": "Products",
     "combos": "Combos",
-    "complements" : "Complements",
+    "complements": "Complements",
     "menus": "Menus",
     "promotions": "Promotions",
     "name": "Name",
     "product": "Product",
     "complement": "Complement",
-    "detail": "Detail"  }
+    "detail": "Detail"
+  }
 }

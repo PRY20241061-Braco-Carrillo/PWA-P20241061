@@ -101,7 +101,7 @@ const OrderCard: React.FC<OrderCardProps> = ({
             <Text as="div" size="2" color="gray"><strong>{t("orderDate")}:</strong> {new Date(orderRequestDate).toLocaleString()}</Text>
             <Text as="div" size="2" color="gray"><strong>{t("total")}:</strong> ${totalPrice.toFixed(2)}</Text>
           </Box>
-          <Box className="flex space-x-4">  {/* Añadimos espacio entre los botones */}
+          <Box className="flex space-x-4"> 
             {(userRole === 'ROLE_WAITER' || userRole === 'ROLE_CHEF') && (
               <Button variant='default' onClick={() => {
                 setIsDetailDialogOpen(true);
@@ -109,7 +109,9 @@ const OrderCard: React.FC<OrderCardProps> = ({
               }}>Detalle</Button>
             )}
             {userRole === 'ROLE_WAITER' && (
+              orderStatus !== 'ENTREGADO' && (
               <Button variant='default' onClick={() => setIsDeleteDialogOpen(true)}>{t("deleteOrder")}</Button>
+            )
             )}
             {userRole === 'ROLE_CHEF' || userRole === 'ROLE_WAITER' && (
               orderStatus !== 'ENTREGADO' && (

@@ -59,7 +59,14 @@
   },
   "Search": {
     "search": "Buscar",
-    "searchPlaceholder": "Buscar pedidos"
+    "searchPlaceholder": "Buscar pedidos",
+    "minCharactersError": "Por favor, introduce al menos 3 caracteres"
+  },
+  "OrderStatus" : {
+    "en_preparacion": "EN PREPARACIÓN",
+    "confirmado": "CONFIRMADO",
+    "entregado": "ENTREGADO",
+    "servido": "SERVIDO"
   },
   "OrderDetails":{
     "title": "Detalles del pedido",

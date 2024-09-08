@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import OrderCard from './OrderCard';
 import "./styles.css";
 import { useOrderContext } from './OrderContext';
+import { useTranslations } from 'next-intl';
 
 interface Order {
   orderId: string;
@@ -22,6 +23,7 @@ const OrderList: React.FC<OrderListProps> = ({ userRole }) => {
   const { ordersQuery } = useOrderContext();
   const { data: orders, error, isLoading } = ordersQuery;
   const [showMoreDelivered, setShowMoreDelivered] = useState(false);
+  const t = useTranslations("OrderStatus");
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -51,7 +53,9 @@ const OrderList: React.FC<OrderListProps> = ({ userRole }) => {
     <div className="order-list-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       {Object.keys(ordersByStatus).map(status => (
         <div key={status} className="order-column">
-          <h2 className="text-xl font-bold mb-4">{status.replace('_', ' ')}</h2>
+          <h2 className="text-xl font-bold mb-4">
+            {t(status.toLowerCase())} {/* Usamos el método `t()` para traducir el status */}
+          </h2>
           {status === 'ENTREGADO' ? (
             <div>
               {visibleDeliveredOrders.map(order => (
