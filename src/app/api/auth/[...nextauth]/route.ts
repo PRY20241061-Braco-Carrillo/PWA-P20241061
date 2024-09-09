@@ -22,14 +22,8 @@ const handler = NextAuth({
 
           const data = await res.json();
 
-          // Verificar si el login fue exitoso y el usuario no tiene el rol "ROLE_CLIENT"
           if (res.ok && data && data.code === 'SUCCESS' && !data.data.roles.includes('ROLE_CLIENT')) {
-            return {
-              id: data.data.userId,
-              name: credentials?.email,
-              roles: data.data.roles,
-              token: data.data.token,
-            };
+            return data
           } else if (data.data.roles.includes('ROLE_CLIENT')) {
             throw new Error('No puedes iniciar sesión con este usuario');
           } else {

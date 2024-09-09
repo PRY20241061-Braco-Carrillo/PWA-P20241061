@@ -39,7 +39,6 @@ const fetchOrders = async (apiService: ApiService, locationId: string): Promise<
 export const useOrders = (): UseQueryResult<Order[], HttpError> => {
   const apiService = useApiService();
   const { data: session } = useSession();
-
   const campusId = session?.user?.data?.campusId;
   const restaurantId = session?.user?.data?.restaurantId;
 
@@ -53,6 +52,6 @@ export const useOrders = (): UseQueryResult<Order[], HttpError> => {
       }
       return fetchOrders(apiService, locationId);
     },
-    enabled: !!apiService && !!locationId,
+    enabled: !!apiService && !!locationId && !!session, // Habilita el fetch solo si todos los valores existen.
   });
 };
