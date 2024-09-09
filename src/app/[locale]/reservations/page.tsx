@@ -68,13 +68,13 @@ const ReservationsGrid: React.FC = () => {
 
   return (
     <Box className="container">
-      <Flex gap="20px" className="order-list">
+      <Flex gap="20px" className="order-list flex-wrap">
         {reservations.map((reservation, index) => (
           <Card key={`${reservation.reservationId}-${index}`} className="order-card">
             <Text size="2" weight="bold">{reservation.reservationId}</Text>
             <br />
             <Text>
-              {t('status')}: <span className={`status-${reservation.reservationStatus.toLowerCase()}`}>{t(`statusI.${reservation.reservationStatus}`)}</span>
+              {t('status')}: <span >{t(`statusI.${reservation.reservationStatus}`)}</span>
             </Text>
             <br />
             <Text>{t('date')}: {new Date(reservation.reservationDate).toLocaleDateString()}</Text>

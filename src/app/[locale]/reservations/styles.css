@@ -8,6 +8,7 @@
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
   color: #1f2937;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
 }
 
 .order-card:hover {
@@ -80,4 +81,16 @@
 
 .cancel-button:hover {
   background-color: #d97706;
+}
+
+.order-list {
+  display: grid;
+  /*Mostrar 2 columnas y agregar todo lo responsive usar query*/
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+
 }

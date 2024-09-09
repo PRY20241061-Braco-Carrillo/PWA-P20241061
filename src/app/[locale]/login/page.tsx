@@ -23,7 +23,7 @@ export default function Login() {
   const [error, setError] = useState<string>();
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const { data: session, status } = useSession(); 
+  const { data: session, status } = useSession();
 
   const onSubmit = async (data: LoginFormInputs) => {
     if (error) setError(undefined);
@@ -39,7 +39,14 @@ export default function Login() {
       if (result.error.includes("No puedes iniciar sesión con este usuario")) {
         setError("No se permite el acceso para usuarios con el rol 'CLIENTE'");
         reset();
-      } else {
+      } else if (result.error.includes("CredentialsSignin")) {
+        setLoading(false);
+
+        setError("Credenciales incorrectas");
+        reset();
+      }
+
+      else {
         setError(result.error);
         reset();
       }
@@ -51,12 +58,15 @@ export default function Login() {
   useEffect(() => {
     if (status === "authenticated" && session?.user?.data?.roles?.includes("ROLE_CLIENT")) {
       setError("No se permite el acceso para usuarios con el rol 'CLIENTE'");
-      reset(); 
+      reset();
       setLoading(false);
     } else if (status === "authenticated") {
 
       router.replace("/" + locale);
     }
+
+   
+
   }, [status, session, locale, router, reset]);
 
   if (loading || status === "loading") {

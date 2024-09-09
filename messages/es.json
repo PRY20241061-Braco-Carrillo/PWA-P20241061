@@ -109,7 +109,7 @@
     },
     "date": "Fecha",
     "qualification": "Calificación",
-    "orderRequestId": "ID de la Solicitud de Pedido",
+    "orderRequestId": "ID de pedido",
     "confirmReservation": "Confirmar Reserva",
     "denyReservation": "Denegar Reserva",
     "cancelReservation": "Cancelar Reserva"

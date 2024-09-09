@@ -108,12 +108,12 @@ const OrderCard: React.FC<OrderCardProps> = ({
                 handleFetchDetails();
               }}>Detalle</Button>
             )}
-            {userRole === 'ROLE_WAITER' || userRole === 'ROLE_ADMIN' && (
+            { (userRole === 'ROLE_WAITER' || userRole === 'ROLE_ADMIN') && (
               orderStatus !== 'ENTREGADO' && (
               <Button variant='default' onClick={() => setIsDeleteDialogOpen(true)}>{t("deleteOrder")}</Button>
             )
             )}
-            {userRole === 'ROLE_CHEF' || userRole === 'ROLE_WAITER' || userRole === 'ROLE_ADMIN' && (
+            {(userRole === 'ROLE_CHEF' || userRole === 'ROLE_WAITER' || userRole === 'ROLE_ADMIN') && (
               orderStatus !== 'ENTREGADO' && (
                 <Button variant='default' onClick={handleUpdateStatus}>Actualizar Estado</Button>
               )
